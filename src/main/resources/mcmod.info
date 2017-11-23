@@ -1,0 +1,16 @@
+[
+{
+  "modid": "wuffysmagicmayhem",
+  "name": "Wuffy's Magic Mayhem",
+  "description": "A magical mod created by LiteWolf101 that adds magical biomes and a magic defence system.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["LiteWolf101"],
+  "credits": "Everyone who makes mods.",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

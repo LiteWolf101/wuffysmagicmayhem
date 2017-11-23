@@ -1,0 +1,20 @@
+#English Lang File for Wuffy's Magic Mayhem Mod
+#Use this symbol for colored text:(§)
+
+#Items
+item.dark_infused_sapling.name=§9Dark Infused Sapling
+
+#Blocks
+tile.dark_infused_wood.name=§9Dark Infused Wood
+tile.dark_infused_leaves.name=§9Dark Infused Leaves
+tile.dark_infused_planks.name=§9Dark Infused Planks
+tile.glow_flowers.name=Glow Flowers
+tile.starlight_wood.name=Starlight Wood
+tile.starlight_leaves.name=Starlight Leaves
+tile.starlight_planks.name=Starlight Planks
+tile.enchanted_wood.name=§bEnchanted Wood
+tile.enchanted_planks.name=§bEnchanted Planks
+tile.enchanted_leaves.name=§bEnchanted Leaves
+tile.ashened_wood.name=§8Ashened Wood
+tile.ashened_planks.name=§8Ashened Planks
+tile.ashened_leaves.name=§8Ashened Leaves
