@@ -27,7 +27,7 @@ public class WuffysMagicMayhem {
 		public ItemStack getTabIconItem() {
 			return new ItemStack(ModItems.darkInfusedSapling);
 		}
-	};;
+	};
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)

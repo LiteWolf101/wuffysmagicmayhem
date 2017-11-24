@@ -9,9 +9,9 @@ tile.dark_infused_wood.name=§9Dark Infused Wood
 tile.dark_infused_leaves.name=§9Dark Infused Leaves
 tile.dark_infused_planks.name=§9Dark Infused Planks
 tile.glow_flowers.name=Glow Flowers
-tile.starlight_wood.name=Starlight Wood
-tile.starlight_leaves.name=Starlight Leaves
-tile.starlight_planks.name=Starlight Planks
+tile.starlight_wood.name=§eStarlight Wood
+tile.starlight_leaves.name=§eStarlight Leaves
+tile.starlight_planks.name=§eStarlight Planks
 tile.enchanted_wood.name=§bEnchanted Wood
 tile.enchanted_planks.name=§bEnchanted Planks
 tile.enchanted_leaves.name=§bEnchanted Leaves
@@ -19,4 +19,5 @@ tile.ashened_wood.name=§8Ashened Wood
 tile.ashened_planks.name=§8Ashened Planks
 tile.ashened_leaves.name=§8Ashened Leaves
 
-itemGroup.wuffysmagicmayhem=Wuffy's Magic Mahem
+#Creative Tab
+itemGroup.wuffysmagicmayhem=§9Wuffy's Magic Mayhem

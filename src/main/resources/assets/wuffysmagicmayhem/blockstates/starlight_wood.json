@@ -1,7 +1,8 @@
 {
   "variants": {
-    "normal": [
-      { "model": "wuffysmagicmayhem:starlight_wood" }
-    ]
+    "axis=y":    { "model": "wuffysmagicmayhem:starlight_wood" },
+    "axis=z":     { "model": "wuffysmagicmayhem:starlight_wood", "x": 90 },
+    "axis=x":     { "model": "wuffysmagicmayhem:starlight_wood", "x": 90, "y": 90 },
+    "axis=none":   { "model": "wuffysmagicmayhem:starlight_wood_all" }
   }
 }

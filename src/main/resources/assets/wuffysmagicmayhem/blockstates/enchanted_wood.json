@@ -1,7 +1,8 @@
 {
   "variants": {
-    "normal": [
-      { "model": "wuffysmagicmayhem:enchanted_wood" }
-    ]
+    "axis=y":    { "model": "wuffysmagicmayhem:enchanted_wood" },
+    "axis=z":     { "model": "wuffysmagicmayhem:enchanted_wood", "x": 90 },
+    "axis=x":     { "model": "wuffysmagicmayhem:enchanted_wood", "x": 90, "y": 90 },
+    "axis=none":   { "model": "wuffysmagicmayhem:enchanted_wood_all" }
   }
 }
