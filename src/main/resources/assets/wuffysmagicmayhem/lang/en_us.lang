@@ -3,6 +3,10 @@
 
 #Items
 item.dark_infused_sapling.name=§9Dark Infused Sapling
+item.bubbleshroom.gray.name=Gray Bubbleshroom
+item.bubbleshroom.blue.name=Blue Bubbleshroom
+item.bubbleshroom.green.name=Green Bubbleshroom
+item.bubbleshroom.pink.name=Pink Bubbleshroom
 
 #Blocks
 tile.dark_infused_wood.name=§9Dark Infused Wood
@@ -18,6 +22,14 @@ tile.enchanted_leaves.name=§bEnchanted Leaves
 tile.ashened_wood.name=§8Ashened Wood
 tile.ashened_planks.name=§8Ashened Planks
 tile.ashened_leaves.name=§8Ashened Leaves
+tile.totem_top.name=Totem Top
+tile.totem_upgrade_base.name=Totem Upgrade Base
 
 #Creative Tab
 itemGroup.wuffysmagicmayhem=§9Wuffy's Magic Mayhem
+
+#Container
+container.totem_upgrade_base=Totem Upgrade Base
+
+#Sounds
+block.totem_top.totem_hit=Totem Hit

@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "bubbleshroom_type=gray":    { "model": "wuffysmagicmayhem:gray_bubbleshroom" },
+    "bubbleshroom_type=blue":    { "model": "wuffysmagicmayhem:blue_bubbleshroom" },
+    "bubbleshroom_type=green":   { "model": "wuffysmagicmayhem:green_bubbleshroom" },
+    "bubbleshroom_type=pink":    { "model": "wuffysmagicmayhem:pink_bubbleshroom" }
+  }
+}

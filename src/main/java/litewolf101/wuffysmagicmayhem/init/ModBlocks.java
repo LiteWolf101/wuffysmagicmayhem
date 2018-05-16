@@ -2,28 +2,20 @@ package litewolf101.wuffysmagicmayhem.init;
 
 import litewolf101.wuffysmagicmayhem.Reference;
 import litewolf101.wuffysmagicmayhem.WuffysMagicMayhem;
-import litewolf101.wuffysmagicmayhem.blocks.AshenedWood;
-import litewolf101.wuffysmagicmayhem.blocks.DarkInfusedLeaves;
-import litewolf101.wuffysmagicmayhem.blocks.DarkInfusedPlanks;
-import litewolf101.wuffysmagicmayhem.blocks.DarkInfusedWood;
-import litewolf101.wuffysmagicmayhem.blocks.EnchantedLeaves;
-import litewolf101.wuffysmagicmayhem.blocks.EnchantedPlanks;
-import litewolf101.wuffysmagicmayhem.blocks.EnchantedWood;
-import litewolf101.wuffysmagicmayhem.blocks.GlowFlowers;
-import litewolf101.wuffysmagicmayhem.blocks.StarlightLeaves;
-import litewolf101.wuffysmagicmayhem.blocks.StarlightPlanks;
-import litewolf101.wuffysmagicmayhem.blocks.StarlightWood;
+import litewolf101.wuffysmagicmayhem.blocks.*;
+import litewolf101.wuffysmagicmayhem.handlers.EnumHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
  * Created by Ethan Migit on 11/17/2017.
@@ -32,19 +24,22 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Mod.EventBusSubscriber(modid = Reference.MODID)
 public class ModBlocks {
 
-	static Block darkInfusedWood;
-	static Block starlightWood;
-	static Block enchantedWood;
-	static Block ashenedWood;
-	static Block darkInfusedPlanks;
-	static Block starlightPlanks;
-	static Block enchantedPlanks;
-	static Block ashenedPlanks;
-	static Block darkInfusedLeaves;
-	static Block starlightLeaves;
-	static Block enchantedLeaves;
-	static Block ashenedLeaves;
-	static Block glowFlowers;
+	public static Block darkInfusedWood;
+	public static Block starlightWood;
+	public static Block enchantedWood;
+	public static Block ashenedWood;
+	public static Block darkInfusedPlanks;
+	public static Block starlightPlanks;
+	public static Block enchantedPlanks;
+	public static Block ashenedPlanks;
+	public static Block darkInfusedLeaves;
+	public static Block starlightLeaves;
+	public static Block enchantedLeaves;
+	public static Block ashenedLeaves;
+	public static Block glowFlowers;
+	public static Block blockBubbleshroom;
+	public static Block totemTop;
+	public static Block totemUpgradeBase;
 
 	public static void init() {
 		darkInfusedWood = new DarkInfusedWood("dark_infused_wood", Material.WOOD).setHardness(1.0f).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB).setLightLevel(0.2f);
@@ -81,6 +76,12 @@ public class ModBlocks {
 
 		glowFlowers = new GlowFlowers("glow_flowers", Material.GRASS).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB).setLightOpacity(15);
 
+		blockBubbleshroom = new BlockBubbleshroom("block_bubbleshroom", Material.GRASS).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB).setLightLevel(0.5f);
+
+		totemTop = new BlockTotemTop("totem_top", Material.ROCK).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
+
+		totemUpgradeBase = new BlockTotemUpgradeBase("totem_upgrade_base", Material.ROCK).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
+
 	}
 
 	@SubscribeEvent
@@ -98,6 +99,9 @@ public class ModBlocks {
 		event.getRegistry().register(enchantedLeaves);
 		event.getRegistry().register(ashenedLeaves);
 		event.getRegistry().register(glowFlowers);
+		event.getRegistry().register(blockBubbleshroom);
+		event.getRegistry().register(totemTop);
+		event.getRegistry().register(totemUpgradeBase);
 
 	}
 
@@ -116,6 +120,9 @@ public class ModBlocks {
 		event.getRegistry().registerAll(new ItemBlock(enchantedLeaves).setRegistryName(enchantedLeaves.getRegistryName()));
 		event.getRegistry().registerAll(new ItemBlock(ashenedLeaves).setRegistryName(ashenedLeaves.getRegistryName()));
 		event.getRegistry().registerAll(new ItemBlock(glowFlowers).setRegistryName(glowFlowers.getRegistryName()));
+		event.getRegistry().registerAll(new ItemBlock(blockBubbleshroom).setRegistryName(blockBubbleshroom.getRegistryName()));
+		event.getRegistry().registerAll(new ItemBlock(totemTop).setRegistryName(totemTop.getRegistryName()));
+		event.getRegistry().registerAll(new ItemBlock(totemUpgradeBase).setRegistryName(totemUpgradeBase.getRegistryName()));
 	}
 
 	@SubscribeEvent
@@ -133,10 +140,17 @@ public class ModBlocks {
 		registerRender(Item.getItemFromBlock(enchantedLeaves));
 		registerRender(Item.getItemFromBlock(ashenedLeaves));
 		registerRender(Item.getItemFromBlock(glowFlowers));
-
+		for (int i = 0; i < EnumHandler.BubbleshroomType.values().length; i++) {
+			registerRender(blockBubbleshroom, i, EnumHandler.BubbleshroomType.values()[i].getName() + "_block_bubbleshroom");
+		}
+		registerRender(Item.getItemFromBlock(totemTop));
+		registerRender(Item.getItemFromBlock(totemUpgradeBase));
 	}
 
 	public static void registerRender(Item item) {
 		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
+	}
+	private static void registerRender(Block block, int meta, String fileName) {
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), meta, new ModelResourceLocation(new ResourceLocation(Reference.MODID, fileName), "inventory"));
 	}
 }

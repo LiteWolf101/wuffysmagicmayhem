@@ -1,5 +1,6 @@
 package litewolf101.wuffysmagicmayhem;
 
+import litewolf101.wuffysmagicmayhem.handlers.WMMSoundHandler;
 import litewolf101.wuffysmagicmayhem.init.ModBlocks;
 import litewolf101.wuffysmagicmayhem.init.ModItems;
 import litewolf101.wuffysmagicmayhem.proxy.CommonProxy;
@@ -37,6 +38,7 @@ public class WuffysMagicMayhem {
 		proxy.preInit(event);
 		ModItems.init();
 		ModBlocks.init();
+		proxy.registerTileEntities();
 
 	}
 
@@ -44,11 +46,13 @@ public class WuffysMagicMayhem {
 	public void init(FMLInitializationEvent event) {
 		System.out.println(Reference.MODID + ":init");
 		proxy.init(event);
+		proxy.registerModelBakeryStuff();
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		System.out.println(Reference.MODID + ":postInit");
 		proxy.postInit(event);
+		System.out.println(Reference.MODID + ":Fix Issues: Bubbleshroom, Glow Flowers");
 	}
 }

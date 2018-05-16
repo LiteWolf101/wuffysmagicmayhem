@@ -1,0 +1,13 @@
+{
+  "block.totem_top.totem_hit": {
+    "category": "block",
+    "subtitle": "block.totem_top.totem_hit",
+    "sounds": [
+      {
+        "name": "wuffysmagicmayhem:block/totem_top/totem_hit",
+        "stream": true
+
+      }
+    ]
+  }
+}

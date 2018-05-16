@@ -24,7 +24,7 @@ public class EnchantedPlanks extends Block {
     public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
     {
         if (entityIn instanceof EntityLivingBase){
-            ((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(Potion.getPotionById(16), 100));
+            ((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(Potion.getPotionById(16), 201));
         }
     }
 
