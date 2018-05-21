@@ -11,7 +11,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 /**
- * Created by Ethan Migit on 11/17/2017.
+ * Created by LiteWolf101 on 11/17/2017.
  */
 public class DarkInfusedWood extends BlockRotatedPillar {
 

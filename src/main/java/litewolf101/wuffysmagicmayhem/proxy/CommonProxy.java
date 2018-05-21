@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
- * Created by Ethan Migit on 11/16/2017.
+ * Created by LiteWolf101 on 11/16/2017.
  */
 public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event)

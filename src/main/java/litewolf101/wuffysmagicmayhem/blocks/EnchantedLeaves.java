@@ -7,7 +7,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.BlockRenderLayer;
 
 /**
- * Created by Ethan Migit on 11/19/2017.
+ * Created by LiteWolf101 on 11/19/2017.
  */
 public class EnchantedLeaves extends Block{
     public EnchantedLeaves(String name,Material material) {

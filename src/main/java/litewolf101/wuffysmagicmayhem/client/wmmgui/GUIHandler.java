@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 import javax.annotation.Nullable;
 
 /**
- * Created by Ethan Migit on 5/15/2018.
+ * Created by LiteWolf101 on 5/15/2018.
  */
 public class GUIHandler implements IGuiHandler {
     public  static final int BLOCK_TOTEM_UPGRADE_BASE = 0;

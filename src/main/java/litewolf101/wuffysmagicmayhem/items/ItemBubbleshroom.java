@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 
 /**
- * Created by Ethan Migit on 3/5/2018.
+ * Created by LiteWolf101 on 3/5/2018.
  */
 public class ItemBubbleshroom extends Item {
     public ItemBubbleshroom(String name) {

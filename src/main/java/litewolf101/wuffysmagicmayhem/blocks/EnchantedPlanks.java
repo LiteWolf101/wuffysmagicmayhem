@@ -11,7 +11,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 /**
- * Created by Ethan Migit on 11/19/2017.
+ * Created by LiteWolf101 on 11/19/2017.
  */
 public class EnchantedPlanks extends Block {
     public EnchantedPlanks(String name,Material material) {

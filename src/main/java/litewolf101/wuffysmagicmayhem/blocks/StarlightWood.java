@@ -12,7 +12,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 /**
- * Created by Ethan Migit on 11/18/2017.
+ * Created by LiteWolf101 on 11/18/2017.
  */
 public class StarlightWood extends BlockRotatedPillar {
     public StarlightWood(String name, Material material) {

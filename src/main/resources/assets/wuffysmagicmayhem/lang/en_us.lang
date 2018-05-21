@@ -7,6 +7,9 @@ item.bubbleshroom.gray.name=Gray Bubbleshroom
 item.bubbleshroom.blue.name=Blue Bubbleshroom
 item.bubbleshroom.green.name=Green Bubbleshroom
 item.bubbleshroom.pink.name=Pink Bubbleshroom
+item.wmm_power_upgrade.name=Power Upgrade
+item.wmm_speed_upgrade.name=Speed Upgrade
+item.wmm_range_upgrade.name=Range Upgrade
 
 #Blocks
 tile.dark_infused_wood.name=§9Dark Infused Wood

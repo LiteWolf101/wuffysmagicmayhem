@@ -18,7 +18,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 /**
- * Created by Ethan Migit on 11/24/2017.
+ * Created by LiteWolf101 on 11/24/2017.
  */
 public class BlockBubbleshroom extends Block implements IMetaBlockName {
     public BlockBubbleshroom(String name, Material material) {

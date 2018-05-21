@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 /**
- * Created by Ethan Migit on 11/16/2017.
+ * Created by LiteWolf101 on 11/16/2017.
  */
 public class ClientProxy extends CommonProxy {
 

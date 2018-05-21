@@ -1,32 +1,30 @@
 package litewolf101.wuffysmagicmayhem.container;
 
+import litewolf101.wuffysmagicmayhem.container.slot.SlotFilterable;
+import litewolf101.wuffysmagicmayhem.init.ModItems;
 import litewolf101.wuffysmagicmayhem.tileentity.TileEntityBlockTotemUpgradeBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.SlotItemHandler;
 
 /**
- * Created by Ethan Migit on 5/15/2018.
+ * Created by LiteWolf101 on 5/15/2018.
  */
 public class ContainerBlockTotemUpgradeBase extends Container {
     private TileEntityBlockTotemUpgradeBase te;
-    private IItemHandler handler;
 
     public ContainerBlockTotemUpgradeBase(IInventory playerInv, TileEntityBlockTotemUpgradeBase te) {
         this.te = te;
-        this.handler = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
         //Container Slots
-        this.addSlotToContainer(new SlotItemHandler(handler, 0, 44, 35));
-        this.addSlotToContainer(new SlotItemHandler(handler, 1, 62, 35));
-        this.addSlotToContainer(new SlotItemHandler(handler, 2, 80, 35));
-        this.addSlotToContainer(new SlotItemHandler(handler, 3, 98, 35));
-        this.addSlotToContainer(new SlotItemHandler(handler, 4, 116, 35));
+        this.addSlotToContainer(new SlotFilterable(te, 0, 44, 35, stack -> stack.getItem() == ModItems.wmmRangeUpgrade));
+        this.addSlotToContainer(new SlotFilterable(te, 1, 62, 35, stack -> stack.getItem() == ModItems.wmmPowerUpgrade));
+        this.addSlotToContainer(new SlotFilterable(te, 2, 80, 35, stack -> stack.getItem() == ModItems.wmmSpeedUpgrade));
+        this.addSlotToContainer(new SlotFilterable(te, 3, 98, 35, stack -> stack.getItem() == Item.getItemFromBlock(Blocks.AIR)));
+        this.addSlotToContainer(new SlotFilterable(te, 4, 116, 35, stack -> stack.getItem() == Item.getItemFromBlock(Blocks.AIR)));
 
         int xPos = 8;
         int yPos = 84;
@@ -45,8 +43,8 @@ public class ContainerBlockTotemUpgradeBase extends Container {
     }
 
     @Override
-    public boolean canInteractWith(EntityPlayer playerIn) {
-        return this.te.isUseableByPlayer(playerIn);
+    public boolean canInteractWith(EntityPlayer player) {
+        return te.isUsableByPlayer(player);
     }
 
     @Override
@@ -57,18 +55,19 @@ public class ContainerBlockTotemUpgradeBase extends Container {
         if (slot != null && slot.getHasStack()) {
             ItemStack current = slot.getStack();
             previous = current.copy();
+            int inventorySize = te.getSizeInventory();
 
-            if (fromSlot < handler.getSlots()) {
+            if (fromSlot < inventorySize) {
                 // From container inventory to player's inventory
-                if (!this.mergeItemStack(current, handler.getSlots(), handler.getSlots() + 36, true))
+                if (!this.mergeItemStack(current, inventorySize, inventorySize + 36, true))
                     return ItemStack.EMPTY;
             } else {
                 // From the player's inventory to container
-                if(current.getItem() == Items.ENCHANTED_BOOK) {
-                    if(!this.mergeItemStack(current, 0, handler.getSlots(), false))
+                if(current.getItem() == ModItems.wmmRangeUpgrade) {
+                    if(!this.mergeItemStack(current, 0, inventorySize, false))
                         return ItemStack.EMPTY;
                 }
-                if (!this.mergeItemStack(current, 0, handler.getSlots(), false))
+                if (!this.mergeItemStack(current, 0, inventorySize, false))
                     return ItemStack.EMPTY;
             }
 

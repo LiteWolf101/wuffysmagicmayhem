@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Created by Ethan Migit on 5/11/2018.
+ * Created by LiteWolf101 on 5/11/2018.
  */
 public class BlockTotemTop extends Block {
     public BlockTotemTop(String name, Material material) {
@@ -88,6 +88,7 @@ public class BlockTotemTop extends Block {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public boolean isFullCube(IBlockState state) {
         return false;
     }

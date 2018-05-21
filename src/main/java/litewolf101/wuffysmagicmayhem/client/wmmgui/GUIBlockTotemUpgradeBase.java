@@ -10,7 +10,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 
 /**
- * Created by Ethan Migit on 5/15/2018.
+ * Created by LiteWolf101 on 5/15/2018.
  */
 public class GUIBlockTotemUpgradeBase extends GuiContainer {
     private TileEntityBlockTotemUpgradeBase te;

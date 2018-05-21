@@ -5,7 +5,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 
 /**
- * Created by Ethan Migit on 11/17/2017.
+ * Created by LiteWolf101 on 11/17/2017.
  */
 public class DarkInfusedPlanks extends Block {
     public DarkInfusedPlanks(String name, Material material) {

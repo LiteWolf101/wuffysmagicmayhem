@@ -8,7 +8,7 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 
 /**
- * Created by Ethan Migit on 11/18/2017.
+ * Created by LiteWolf101 on 11/18/2017.
  */
 public class StarlightLeaves extends Block {
     public StarlightLeaves(String name, Material material) {

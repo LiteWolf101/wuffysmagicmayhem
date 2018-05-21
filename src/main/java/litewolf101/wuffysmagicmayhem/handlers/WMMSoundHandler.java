@@ -6,7 +6,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 /**
- * Created by Ethan Migit on 5/14/2018.
+ * Created by LiteWolf101 on 5/14/2018.
  */
 public class WMMSoundHandler {
 

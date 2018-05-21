@@ -1,6 +1,5 @@
 package litewolf101.wuffysmagicmayhem.blocks;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockRotatedPillar;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -12,7 +11,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 /**
- * Created by Ethan Migit on 11/18/2017.
+ * Created by LiteWolf101 on 11/18/2017.
  */
 public class EnchantedWood extends BlockRotatedPillar {
     public EnchantedWood(String name, Material material) {

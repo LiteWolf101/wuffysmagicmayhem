@@ -3,7 +3,7 @@ package litewolf101.wuffysmagicmayhem.handlers;
 import net.minecraft.util.IStringSerializable;
 
 /**
- * Created by Ethan Migit on 3/5/2018.
+ * Created by LiteWolf101 on 3/5/2018.
  */
 public class EnumHandler {
     public static enum BubbleshroomType implements IStringSerializable {

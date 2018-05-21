@@ -1,7 +1,7 @@
 package litewolf101.wuffysmagicmayhem;
 
 /**
- * Created by Ethan Migit on 11/17/2017.
+ * Created by LiteWolf101 on 11/17/2017.
  */
 public class Reference {
     public static final String MODID = "wuffysmagicmayhem";

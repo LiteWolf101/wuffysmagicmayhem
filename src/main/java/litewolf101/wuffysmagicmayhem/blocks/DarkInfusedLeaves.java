@@ -7,7 +7,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.BlockRenderLayer;
 
 /**
- * Created by Ethan Migit on 11/17/2017.
+ * Created by LiteWolf101 on 11/17/2017.
  */
 public class DarkInfusedLeaves extends Block {
     public DarkInfusedLeaves(String name, Material material) {

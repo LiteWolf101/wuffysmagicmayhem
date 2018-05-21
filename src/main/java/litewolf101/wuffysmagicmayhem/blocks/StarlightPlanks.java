@@ -9,7 +9,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 /**
- * Created by Ethan Migit on 11/18/2017.
+ * Created by LiteWolf101 on 11/18/2017.
  */
 public class StarlightPlanks extends Block {
     public StarlightPlanks(String name, Material material) {

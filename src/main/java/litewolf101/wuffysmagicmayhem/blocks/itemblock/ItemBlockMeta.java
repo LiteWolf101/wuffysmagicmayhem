@@ -5,7 +5,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
 /**
- * Created by Ethan Migit on 3/5/2018.
+ * Created by LiteWolf101 on 3/5/2018.
  */
 public class ItemBlockMeta extends ItemBlock {
 

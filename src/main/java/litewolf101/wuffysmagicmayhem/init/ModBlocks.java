@@ -18,7 +18,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
- * Created by Ethan Migit on 11/17/2017.
+ * Created by LiteWolf101 on 11/17/2017.
  */
 
 @Mod.EventBusSubscriber(modid = Reference.MODID)
@@ -74,7 +74,7 @@ public class ModBlocks {
 
 		ashenedLeaves = new EnchantedLeaves("ashened_leaves", Material.LEAVES).setHardness(0.5f).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB).setLightOpacity(15);
 
-		glowFlowers = new GlowFlowers("glow_flowers", Material.GRASS).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB).setLightOpacity(15);
+		glowFlowers = new GlowFlowers("glow_flowers", Material.GRASS).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
 
 		blockBubbleshroom = new BlockBubbleshroom("block_bubbleshroom", Material.GRASS).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB).setLightLevel(0.5f);
 

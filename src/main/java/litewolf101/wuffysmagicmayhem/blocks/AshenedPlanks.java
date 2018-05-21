@@ -5,7 +5,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 
 /**
- * Created by Ethan Migit on 11/19/2017.
+ * Created by LiteWolf101 on 11/19/2017.
  */
 public class AshenedPlanks extends Block {
     public AshenedPlanks(String name,Material material) {
