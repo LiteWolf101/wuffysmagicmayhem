@@ -1,0 +1,39 @@
+#English Lang File for Wuffy's Magic Mayhem Mod
+#Use this symbol for colored text:(§)
+
+#Creative Tab
+itemGroup.magicmayhem.name=§9Wuffy's Magic Mayhem
+
+#Blocks
+tile.magicmayhem.glowing_pandora.name=Glowing Pandora
+
+tile.magicmayhem.dark_infused_wood.name=§9Dark Infused Wood
+tile.magicmayhem.dark_infused_leaves.name=§9Dark Infused Leaves
+tile.magicmayhem.dark_infused_planks.name=§9Dark Infused Planks
+tile.magicmayhem.starlight_wood.name=§eStarlight Wood
+tile.magicmayhem.starlight_leaves.name=§eStarlight Leaves
+tile.magicmayhem.starlight_planks.name=§eStarlight Planks
+tile.magicmayhem.enchanted_wood.name=§bEnchanted Wood
+tile.magicmayhem.enchanted_planks.name=§bEnchanted Planks
+tile.magicmayhem.enchanted_leaves.name=§bEnchanted Leaves
+tile.magicmayhem.ashened_wood.name=§8Ashened Wood
+tile.magicmayhem.ashened_planks.name=§8Ashened Planks
+tile.magicmayhem.ashened_leaves.name=§8Ashened Leaves
+tile.magicmayhem.totem_top.name=Totem Top
+tile.magicmayhem.totem_upgrade_base.name=Totem Upgrade Base
+
+#Items
+item.magicmayhem.dark_infused_sapling.name=§9Dark Infused Sapling
+item.magicmayhem.bubbleshroom.gray.name=Gray Bubbleshroom
+item.magicmayhem.bubbleshroom.blue.name=Blue Bubbleshroom
+item.magicmayhem.bubbleshroom.green.name=Green Bubbleshroom
+item.magicmayhem.bubbleshroom.pink.name=Pink Bubbleshroom
+item.magicmayhem.wmm_power_upgrade.name=Power Upgrade
+item.magicmayhem.wmm_speed_upgrade.name=Speed Upgrade
+item.magicmayhem.wmm_range_upgrade.name=Range Upgrade
+
+#Container
+container.magicmayhem.totem_upgrade_base.name=Totem Upgrade Base
+
+#Sounds
+block.magicmayhem.totem_top.totem_hit=Totem Hit
