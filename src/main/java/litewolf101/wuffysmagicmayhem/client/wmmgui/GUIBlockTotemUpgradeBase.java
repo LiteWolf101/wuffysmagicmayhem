@@ -33,8 +33,9 @@ public class GUIBlockTotemUpgradeBase extends GuiContainer {
 
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-        String s = I18n.format("container.totem_upgrade_base"); //Gets the formatted name for the block breaker from the language file - NOTE ADD "container.block_breaker=Block Breaker" to the language file (without quotes) and then delete this note
+        String s = I18n.format("container.totem_upgrade_base");
         this.mc.fontRenderer.drawString(s, this.xSize / 2 - this.mc.fontRenderer.getStringWidth(s) / 2, 6, 4210752);
         this.mc.fontRenderer.drawString(this.playerInv.getDisplayName().getFormattedText(), 8, 72, 4210752);
+        this.renderHoveredToolTip(mouseX - 125, mouseY - 35);
     }
 }

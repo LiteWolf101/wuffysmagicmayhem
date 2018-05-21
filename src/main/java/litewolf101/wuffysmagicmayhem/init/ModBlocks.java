@@ -3,6 +3,7 @@ package litewolf101.wuffysmagicmayhem.init;
 import litewolf101.wuffysmagicmayhem.Reference;
 import litewolf101.wuffysmagicmayhem.WuffysMagicMayhem;
 import litewolf101.wuffysmagicmayhem.blocks.*;
+import litewolf101.wuffysmagicmayhem.blocks.itemblock.ItemBlockBase;
 import litewolf101.wuffysmagicmayhem.handlers.EnumHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -40,6 +41,7 @@ public class ModBlocks {
 	public static Block blockBubbleshroom;
 	public static Block totemTop;
 	public static Block totemUpgradeBase;
+	public static Block strangeGrass;
 
 	public static void init() {
 		darkInfusedWood = new DarkInfusedWood("dark_infused_wood", Material.WOOD).setHardness(1.0f).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB).setLightLevel(0.2f);
@@ -82,6 +84,8 @@ public class ModBlocks {
 
 		totemUpgradeBase = new BlockTotemUpgradeBase("totem_upgrade_base", Material.ROCK).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
 
+		strangeGrass = new BlockStrangeGrass("strange_grass", Material.VINE).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
+
 	}
 
 	@SubscribeEvent
@@ -102,27 +106,29 @@ public class ModBlocks {
 		event.getRegistry().register(blockBubbleshroom);
 		event.getRegistry().register(totemTop);
 		event.getRegistry().register(totemUpgradeBase);
+		event.getRegistry().register(strangeGrass);
 
 	}
 
 	@SubscribeEvent
 	public static void registerItemBlocks(RegistryEvent.Register<Item> event) {
-		event.getRegistry().registerAll(new ItemBlock(darkInfusedWood).setRegistryName(darkInfusedWood.getRegistryName()));
-		event.getRegistry().registerAll(new ItemBlock(starlightWood).setRegistryName(starlightWood.getRegistryName()));
-		event.getRegistry().registerAll(new ItemBlock(enchantedWood).setRegistryName(enchantedWood.getRegistryName()));
-		event.getRegistry().registerAll(new ItemBlock(ashenedWood).setRegistryName(ashenedWood.getRegistryName()));
-		event.getRegistry().registerAll(new ItemBlock(darkInfusedPlanks).setRegistryName(darkInfusedPlanks.getRegistryName()));
-		event.getRegistry().registerAll(new ItemBlock(starlightPlanks).setRegistryName(starlightPlanks.getRegistryName()));
-		event.getRegistry().registerAll(new ItemBlock(enchantedPlanks).setRegistryName(enchantedPlanks.getRegistryName()));
-		event.getRegistry().registerAll(new ItemBlock(ashenedPlanks).setRegistryName(ashenedPlanks.getRegistryName()));
-		event.getRegistry().registerAll(new ItemBlock(darkInfusedLeaves).setRegistryName(darkInfusedLeaves.getRegistryName()));
-		event.getRegistry().registerAll(new ItemBlock(starlightLeaves).setRegistryName(starlightLeaves.getRegistryName()));
-		event.getRegistry().registerAll(new ItemBlock(enchantedLeaves).setRegistryName(enchantedLeaves.getRegistryName()));
-		event.getRegistry().registerAll(new ItemBlock(ashenedLeaves).setRegistryName(ashenedLeaves.getRegistryName()));
-		event.getRegistry().registerAll(new ItemBlock(glowFlowers).setRegistryName(glowFlowers.getRegistryName()));
-		event.getRegistry().registerAll(new ItemBlock(blockBubbleshroom).setRegistryName(blockBubbleshroom.getRegistryName()));
-		event.getRegistry().registerAll(new ItemBlock(totemTop).setRegistryName(totemTop.getRegistryName()));
-		event.getRegistry().registerAll(new ItemBlock(totemUpgradeBase).setRegistryName(totemUpgradeBase.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(darkInfusedWood).setRegistryName(darkInfusedWood.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(starlightWood).setRegistryName(starlightWood.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(enchantedWood).setRegistryName(enchantedWood.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(ashenedWood).setRegistryName(ashenedWood.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(darkInfusedPlanks).setRegistryName(darkInfusedPlanks.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(starlightPlanks).setRegistryName(starlightPlanks.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(enchantedPlanks).setRegistryName(enchantedPlanks.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(ashenedPlanks).setRegistryName(ashenedPlanks.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(darkInfusedLeaves).setRegistryName(darkInfusedLeaves.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(starlightLeaves).setRegistryName(starlightLeaves.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(enchantedLeaves).setRegistryName(enchantedLeaves.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(ashenedLeaves).setRegistryName(ashenedLeaves.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(glowFlowers).setRegistryName(glowFlowers.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(blockBubbleshroom).setRegistryName(blockBubbleshroom.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(totemTop).setRegistryName(totemTop.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(totemUpgradeBase).setRegistryName(totemUpgradeBase.getRegistryName()));
+		event.getRegistry().register(new ItemBlockBase(strangeGrass).setRegistryName(strangeGrass.getRegistryName()));
 	}
 
 	@SubscribeEvent
@@ -145,6 +151,7 @@ public class ModBlocks {
 		}
 		registerRender(Item.getItemFromBlock(totemTop));
 		registerRender(Item.getItemFromBlock(totemUpgradeBase));
+		registerRender(Item.getItemFromBlock(strangeGrass));
 	}
 
 	public static void registerRender(Item item) {

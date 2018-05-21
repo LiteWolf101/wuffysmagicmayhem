@@ -1,0 +1,6 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "wuffysmagicmayhem:blocks/strange_grass_1"
+  }
+}

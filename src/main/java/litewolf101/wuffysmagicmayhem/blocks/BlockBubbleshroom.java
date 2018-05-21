@@ -1,6 +1,5 @@
 package litewolf101.wuffysmagicmayhem.blocks;
 
-import litewolf101.wuffysmagicmayhem.blocks.itemblock.IMetaBlockName;
 import litewolf101.wuffysmagicmayhem.handlers.EnumHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
