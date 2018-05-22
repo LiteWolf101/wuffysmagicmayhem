@@ -56,3 +56,5 @@ public class WuffysMagicMayhem {
 		System.out.println(Reference.MODID + ":I like to make blocks look pretty! :D");
 	}
 }
+
+//Tree Structures are found in the world named "Tree"
