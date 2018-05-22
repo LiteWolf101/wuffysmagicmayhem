@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 /**
  * Created by LiteWolf101 on 11/24/2017.
  */
-public class BlockBubbleshroom extends Block implements IMetaBlockName {
+public class BlockBubbleshroom extends Block {
     public BlockBubbleshroom(String name, Material material) {
         super(material.PLANTS);
         setUnlocalizedName(name);
@@ -50,11 +50,6 @@ public class BlockBubbleshroom extends Block implements IMetaBlockName {
         for(int i = 0; i < EnumHandler.BubbleshroomType.values().length; i++){
             list.add(new ItemStack(this, 1, i));
         }
-    }
-
-    @Override
-    public String getSpecialName(ItemStack stack) {
-        return EnumHandler.BubbleshroomType.values()[stack.getItemDamage()].getName();
     }
 
     @Override

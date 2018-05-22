@@ -25,6 +25,13 @@ public class GUIBlockTotemUpgradeBase extends GuiContainer {
      }
 
     @Override
+    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+        drawDefaultBackground();
+        super.drawScreen(mouseX, mouseY, partialTicks);
+        this.renderHoveredToolTip(mouseX, mouseY);
+    }
+
+    @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/container/totem_upgrade_base_gui.png"));
@@ -34,8 +41,7 @@ public class GUIBlockTotemUpgradeBase extends GuiContainer {
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
         String s = I18n.format("container.totem_upgrade_base");
-        this.mc.fontRenderer.drawString(s, this.xSize / 2 - this.mc.fontRenderer.getStringWidth(s) / 2, 6, 4210752);
-        this.mc.fontRenderer.drawString(this.playerInv.getDisplayName().getFormattedText(), 8, 72, 4210752);
-        this.renderHoveredToolTip(mouseX - 125, mouseY - 35);
+        this.mc.fontRenderer.drawString(s, this.xSize / 2 - this.mc.fontRenderer.getStringWidth(s) / 2, 6, 11250603);
+        this.mc.fontRenderer.drawString(this.playerInv.getDisplayName().getFormattedText(), 8, 70, 11250603);
     }
 }

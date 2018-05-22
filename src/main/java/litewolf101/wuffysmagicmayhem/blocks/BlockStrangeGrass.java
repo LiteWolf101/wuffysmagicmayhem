@@ -23,7 +23,7 @@ import java.util.Random;
 /**
  * Created by LiteWolf101 on 5/20/2018.
  */
-public class BlockStrangeGrass extends BlockBush implements IGrowable, IShearable, ISubtypeHolder {
+public class BlockStrangeGrass extends BlockBush implements IGrowable, IShearable {
     public BlockStrangeGrass(String name, Material material) {
         super(material);
         setUnlocalizedName(name);
@@ -80,8 +80,4 @@ public class BlockStrangeGrass extends BlockBush implements IGrowable, IShearabl
         return true;
     }
 
-    @Override
-    public String[] getSubNames() {
-        return "with_bulb"
-    }
 }

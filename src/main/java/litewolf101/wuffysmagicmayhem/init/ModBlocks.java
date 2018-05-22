@@ -42,6 +42,7 @@ public class ModBlocks {
 	public static Block totemTop;
 	public static Block totemUpgradeBase;
 	public static Block strangeGrass;
+	public static Block magicGearbox;
 
 	public static void init() {
 		darkInfusedWood = new DarkInfusedWood("dark_infused_wood", Material.WOOD).setHardness(1.0f).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB).setLightLevel(0.2f);
@@ -86,6 +87,8 @@ public class ModBlocks {
 
 		strangeGrass = new BlockStrangeGrass("strange_grass", Material.VINE).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
 
+		magicGearbox = new BlockMagicGearbox("magic_gearbox", Material.ROCK).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
+
 	}
 
 	@SubscribeEvent
@@ -107,6 +110,7 @@ public class ModBlocks {
 		event.getRegistry().register(totemTop);
 		event.getRegistry().register(totemUpgradeBase);
 		event.getRegistry().register(strangeGrass);
+		event.getRegistry().register(magicGearbox);
 
 	}
 
@@ -129,6 +133,7 @@ public class ModBlocks {
 		event.getRegistry().register(new ItemBlock(totemTop).setRegistryName(totemTop.getRegistryName()));
 		event.getRegistry().register(new ItemBlock(totemUpgradeBase).setRegistryName(totemUpgradeBase.getRegistryName()));
 		event.getRegistry().register(new ItemBlockBase(strangeGrass).setRegistryName(strangeGrass.getRegistryName()));
+		event.getRegistry().register(new ItemBlockBase(magicGearbox).setRegistryName(magicGearbox.getRegistryName()));
 	}
 
 	@SubscribeEvent
@@ -152,6 +157,7 @@ public class ModBlocks {
 		registerRender(Item.getItemFromBlock(totemTop));
 		registerRender(Item.getItemFromBlock(totemUpgradeBase));
 		registerRender(Item.getItemFromBlock(strangeGrass));
+		registerRender(Item.getItemFromBlock(magicGearbox));
 	}
 
 	public static void registerRender(Item item) {
