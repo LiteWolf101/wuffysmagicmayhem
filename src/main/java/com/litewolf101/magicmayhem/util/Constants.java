@@ -1,4 +1,4 @@
-package com.litewolf101.magicmayhem;
+package com.litewolf101.magicmayhem.util;
 
 public class Constants {
 

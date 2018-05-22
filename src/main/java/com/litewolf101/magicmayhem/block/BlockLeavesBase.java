@@ -18,8 +18,6 @@ import java.util.List;
 
 public class BlockLeavesBase extends BlockMM implements IShearable {
 
-    //TODO: assign SoundType to Material.LEAVES in Silverfish
-
     public BlockLeavesBase(String blockName) {
         super(blockName, Material.LEAVES);
         setHardness(0.2F);

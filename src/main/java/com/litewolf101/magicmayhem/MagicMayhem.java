@@ -13,7 +13,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.Logger;
 
-import static com.litewolf101.magicmayhem.Constants.*;
+import static com.litewolf101.magicmayhem.util.Constants.*;
 
 @Mod(modid = MODID, name = NAME, version = VERSION, useMetadata = true)
 public class MagicMayhem {

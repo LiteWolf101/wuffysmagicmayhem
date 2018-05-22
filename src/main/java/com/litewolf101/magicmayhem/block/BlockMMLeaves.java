@@ -2,8 +2,9 @@ package com.litewolf101.magicmayhem.block;
 
 import codechicken.lib.vec.Cuboid6;
 import com.google.common.collect.Lists;
-import com.litewolf101.magicmayhem.Constants;
 import com.litewolf101.magicmayhem.client.render.RenderBlockSpecial;
+import com.litewolf101.magicmayhem.util.Constants;
+import com.litewolf101.magicmayhem.util.EnumTreeType;
 import de.kitsunealex.silverfish.block.IRenderBoundsProvider;
 import de.kitsunealex.silverfish.util.ISubtypeHolder;
 import de.kitsunealex.silverfish.util.MathUtils;
@@ -16,6 +17,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class BlockMMLeaves extends BlockLeavesBase implements ISubtypeHolder, IRenderBoundsProvider {
@@ -29,7 +31,7 @@ public class BlockMMLeaves extends BlockLeavesBase implements ISubtypeHolder, IR
 
     @Override
     public String[] getSubNames() {
-        return new String[]{"ashened", "dark_infused", "enchanted", "starlight"};
+        return Arrays.stream(EnumTreeType.values()).map(EnumTreeType::getName).toArray(String[]::new);
     }
 
     @Override
