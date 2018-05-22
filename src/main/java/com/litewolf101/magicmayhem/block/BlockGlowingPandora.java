@@ -131,7 +131,7 @@ public class BlockGlowingPandora extends BlockMM implements IPlantable, IRenderB
 
     @Override
     @SideOnly(Side.CLIENT)
-    public boolean shouldGlow(IBlockAccess world, BlockPos pos, IBlockState state, int side) {
+    public boolean shouldGlow(int meta, int side) {
         return true;
     }
 

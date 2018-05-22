@@ -15,9 +15,11 @@ import de.kitsunealex.silverfish.util.BlockUtils;
 import de.kitsunealex.silverfish.util.ItemUtils;
 import de.kitsunealex.silverfish.util.ModelUtils;
 import de.kitsunealex.silverfish.util.RenderUtils;
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -107,34 +109,62 @@ public class RenderBlockSpecial implements IBlockRenderingHandler {
     @Override
     public void renderItem(ItemStack stack, ItemCameraTransforms.TransformType transformType) {
         CCModel[] model = ModelUtils.generate(ItemUtils.getRenderBounds(stack));
-        String key = ItemUtils.getRenderKey(stack);
 
-        //TODO: make items glow too!
-
-        if(!ModelCache.contains(key)) {
+        if(Block.getBlockFromItem(stack.getItem()) instanceof IBioluminescence) {
+            IBioluminescence iface = (IBioluminescence)Block.getBlockFromItem(stack.getItem());
+            BufferBuilder buffer = Tessellator.getInstance().getBuffer();
             CCRenderState renderState = CCRenderState.instance();
-            BakingVertexBuffer parentBuffer = BakingVertexBuffer.create();
-            parentBuffer.begin(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
+            GlStateManager.pushMatrix();
+            buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
             renderState.reset();
-            renderState.bind(parentBuffer);
+            renderState.bind(buffer);
 
             for(int i = 0; i < model.length; i++) {
                 for(int j = 0; j < 6; j++) {
                     int index = i * 100 + j;
+
+                    if(iface.shouldGlow(stack, index)) {
+                        renderState.brightness = 0x00F000F0;
+                        renderState.pushLightmap();
+                    }
+
                     TextureAtlasSprite texture = ItemUtils.getTexture(stack, index);
                     renderState.baseColour = ItemUtils.getColorMultiplier(stack, index);
                     model[i].render(renderState, j * 4, j * 4 + 4, new IconTransformation(texture));
                 }
             }
 
-            parentBuffer.finishDrawing();
-            ModelCache.put(key, new SimpleBakedModel(parentBuffer.bake()));
+            Tessellator.getInstance().draw();
+            GlStateManager.popMatrix();
         }
+        else {
+            String key = ItemUtils.getRenderKey(stack);
 
-        GlStateManager.pushMatrix();
-        GlStateManager.translate(0.5D, 0.5D, 0.5D);
-        RenderUtils.renderModel(ModelCache.get(key), stack);
-        GlStateManager.popMatrix();
+            if(!ModelCache.contains(key)) {
+                CCRenderState renderState = CCRenderState.instance();
+                BakingVertexBuffer parentBuffer = BakingVertexBuffer.create();
+                parentBuffer.begin(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
+                renderState.reset();
+                renderState.bind(parentBuffer);
+
+                for(int i = 0; i < model.length; i++) {
+                    for(int j = 0; j < 6; j++) {
+                        int index = i * 100 + j;
+                        TextureAtlasSprite texture = ItemUtils.getTexture(stack, index);
+                        renderState.baseColour = ItemUtils.getColorMultiplier(stack, index);
+                        model[i].render(renderState, j * 4, j * 4 + 4, new IconTransformation(texture));
+                    }
+                }
+
+                parentBuffer.finishDrawing();
+                ModelCache.put(key, new SimpleBakedModel(parentBuffer.bake()));
+            }
+
+            GlStateManager.pushMatrix();
+            GlStateManager.translate(0.5D, 0.5D, 0.5D);
+            RenderUtils.renderModel(ModelCache.get(key), stack);
+            GlStateManager.popMatrix();
+        }
     }
 
     @Override
