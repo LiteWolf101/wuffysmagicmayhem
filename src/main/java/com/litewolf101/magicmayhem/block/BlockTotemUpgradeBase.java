@@ -2,7 +2,6 @@ package com.litewolf101.magicmayhem.block;
 
 import codechicken.lib.vec.Cuboid6;
 import com.google.common.collect.Lists;
-import com.litewolf101.magicmayhem.client.render.RenderBlockSpecial;
 import com.litewolf101.magicmayhem.network.GuiHandler;
 import com.litewolf101.magicmayhem.tile.TileEntityTotemUpgradeBase;
 import com.litewolf101.magicmayhem.util.Constants;
@@ -12,7 +11,10 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.*;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -54,20 +56,14 @@ public class BlockTotemUpgradeBase extends BlockMM<TileEntityTotemUpgradeBase> i
 
     @Override
     @SideOnly(Side.CLIENT)
-    public TextureAtlasSprite getTexture(int meta, int side) {
-        return texture[side / 100];
+    public TextureAtlasSprite getTexture(int meta, int side, int modelIndex) {
+        return texture[modelIndex];
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public List<Cuboid6> getRenderBounds(int meta) {
         return Lists.newArrayList(new Cuboid6(1D, 1D, 1D, 15D, 15D, 15D), new Cuboid6(0D, 0D, 0D, 16D, 16D, 16D));
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-        return RenderBlockSpecial.RENDER_TYPE;
     }
 
     @Override

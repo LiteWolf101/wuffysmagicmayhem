@@ -1,7 +1,6 @@
 package com.litewolf101.magicmayhem.block;
 
 import com.google.common.collect.Lists;
-import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -22,14 +21,12 @@ public class BlockLeavesBase extends BlockMM implements IShearable {
         super(blockName, Material.LEAVES);
         setHardness(0.2F);
         setLightOpacity(1);
-        setSoundType(SoundType.PLANT);
     }
 
     public BlockLeavesBase(String blockName, MapColor mapColor) {
         super(blockName, Material.LEAVES, mapColor);
         setHardness(0.2F);
         setLightOpacity(1);
-        setSoundType(SoundType.PLANT);
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.litewolf101.magicmayhem.block;
 
 import codechicken.lib.vec.Cuboid6;
 import com.google.common.collect.Lists;
-import com.litewolf101.magicmayhem.client.render.RenderBlockSpecial;
 import com.litewolf101.magicmayhem.util.Constants;
 import com.litewolf101.magicmayhem.util.EnumTreeType;
 import de.kitsunealex.silverfish.block.IRenderBoundsProvider;
@@ -12,7 +11,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -54,8 +52,8 @@ public class BlockMMLeaves extends BlockLeavesBase implements ISubtypeHolder, IR
 
     @Override
     @SideOnly(Side.CLIENT)
-    public TextureAtlasSprite getTexture(int meta, int side) {
-        return isLayered(meta) ? texture[meta][side / 100] : texture[meta][0];
+    public TextureAtlasSprite getTexture(int meta, int side, int modelIndex) {
+        return isLayered(meta) ? texture[meta][modelIndex] : texture[meta][0];
     }
 
     @Override
@@ -67,12 +65,6 @@ public class BlockMMLeaves extends BlockLeavesBase implements ISubtypeHolder, IR
         else {
             return Lists.newArrayList(MathUtils.FULL);
         }
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-        return RenderBlockSpecial.RENDER_TYPE;
     }
 
     @Override
