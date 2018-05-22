@@ -1,8 +1,8 @@
 package com.litewolf101.magicmayhem;
 
+import com.litewolf101.magicmayhem.init.ModBlocks;
 import com.litewolf101.magicmayhem.proxy.CommonProxy;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -28,7 +28,7 @@ public class MagicMayhem {
 		@Override
 		@SideOnly(Side.CLIENT)
 		public ItemStack getTabIconItem() {
-			return new ItemStack(Blocks.IRON_BLOCK, 1, 0);
+			return new ItemStack(ModBlocks.LOG, 1, 3);
 		}
 	};
 

@@ -18,19 +18,20 @@ tile.magicmayhem.leaves.dark_infused.name=§9Dark Infused Leaves
 tile.magicmayhem.leaves.starlight.name=§eStarlight Leaves
 tile.magicmayhem.leaves.enchanted.name=§bEnchanted Leaves
 tile.magicmayhem.leaves.ashened.name=§8Ashened Leaves
-
-tile.magicmayhem.totem_top.name=Totem Top
 tile.magicmayhem.totem_upgrade_base.name=Totem Upgrade Base
 
+tile.magicmayhem.totem_top.name=Totem Top
+
 #Items
+item.magicmayhem.upgrade.power.name=Power Upgrade
+item.magicmayhem.upgrade.speed.name=Speed Upgrade
+item.magicmayhem.upgrade.range.name=Range Upgrade
+
 item.magicmayhem.dark_infused_sapling.name=§9Dark Infused Sapling
 item.magicmayhem.bubbleshroom.gray.name=Gray Bubbleshroom
 item.magicmayhem.bubbleshroom.blue.name=Blue Bubbleshroom
 item.magicmayhem.bubbleshroom.green.name=Green Bubbleshroom
 item.magicmayhem.bubbleshroom.pink.name=Pink Bubbleshroom
-item.magicmayhem.wmm_power_upgrade.name=Power Upgrade
-item.magicmayhem.wmm_speed_upgrade.name=Speed Upgrade
-item.magicmayhem.wmm_range_upgrade.name=Range Upgrade
 
 #Container
 container.magicmayhem.totem_upgrade_base.name=Totem Upgrade Base
