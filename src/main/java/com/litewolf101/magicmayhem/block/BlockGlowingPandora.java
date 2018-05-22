@@ -2,6 +2,7 @@ package com.litewolf101.magicmayhem.block;
 
 import codechicken.lib.vec.Cuboid6;
 import com.google.common.collect.Lists;
+import com.litewolf101.magicmayhem.client.render.RenderBlockSpecial;
 import de.kitsunealex.silverfish.block.IRenderBoundsProvider;
 import de.kitsunealex.silverfish.util.MathUtils;
 import net.minecraft.block.Block;
@@ -10,6 +11,7 @@ import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -24,13 +26,12 @@ import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.Random;
 
-public class BlockGlowingPandora extends BlockMM implements IPlantable, IRenderBoundsProvider {
+public class BlockGlowingPandora extends BlockMM implements IPlantable, IRenderBoundsProvider, IBioluminescence {
 
     private static final AxisAlignedBB BOUNDING_BOX = MathUtils.divide(new Cuboid6(0D, 0D, 0D, 16D, 0.1D, 16D), 16D).aabb();
 
     public BlockGlowingPandora() {
         super("glowing_pandora", Material.PLANTS);
-        setLightLevel(0.5F);
         setTickRandomly(true);
     }
 
@@ -112,6 +113,12 @@ public class BlockGlowingPandora extends BlockMM implements IPlantable, IRenderB
 
     @Override
     @SideOnly(Side.CLIENT)
+    public EnumBlockRenderType getRenderType(IBlockState state) {
+        return RenderBlockSpecial.RENDER_TYPE;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
     public boolean canRenderInLayer(IBlockState state, BlockRenderLayer layer) {
         return layer == BlockRenderLayer.CUTOUT;
     }
@@ -120,6 +127,12 @@ public class BlockGlowingPandora extends BlockMM implements IPlantable, IRenderB
     @SideOnly(Side.CLIENT)
     public List<Cuboid6> getRenderBounds(int meta) {
         return Lists.newArrayList(new Cuboid6(0D, 0D, 0D, 16D, 0.1D, 16D));
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean shouldGlow(IBlockAccess world, BlockPos pos, IBlockState state, int side) {
+        return true;
     }
 
 }

@@ -6,6 +6,7 @@ import codechicken.lib.render.buffer.BakingVertexBuffer;
 import codechicken.lib.vec.Translation;
 import codechicken.lib.vec.Vector3;
 import codechicken.lib.vec.uv.IconTransformation;
+import com.litewolf101.magicmayhem.block.IBioluminescence;
 import de.kitsunealex.silverfish.client.render.ModelCache;
 import de.kitsunealex.silverfish.client.render.RenderingRegistry;
 import de.kitsunealex.silverfish.client.render.SimpleBakedModel;
@@ -43,29 +44,54 @@ public class RenderBlockSpecial implements IBlockRenderingHandler {
     @Override
     public boolean renderBlock(IBlockAccess world, BlockPos pos, IBlockState state, BufferBuilder buffer) {
         CCModel[] model = ModelUtils.generate(BlockUtils.getRenderBounds(world, pos, state));
-        String key = BlockUtils.getRenderKey(world, pos, state);
 
-        if(!ModelCache.contains(key)) {
+        if(state.getBlock() instanceof IBioluminescence) {
+            IBioluminescence iface = (IBioluminescence)state.getBlock();
             CCRenderState renderState = CCRenderState.instance();
-            BakingVertexBuffer parentBuffer = BakingVertexBuffer.create();
-            parentBuffer.begin(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
             renderState.reset();
-            renderState.bind(parentBuffer);
+            renderState.bind(buffer);
 
             for(int i = 0; i < model.length; i++) {
                 for(int j = 0; j < 6; j++) {
                     int index = i * 100 + j;
+
+                    if(iface.shouldGlow(world, pos, state, index)) {
+                        renderState.brightness = 0x00F000F0;
+                    }
+
                     TextureAtlasSprite texture = BlockUtils.getTexture(world, pos, state, index);
                     renderState.baseColour = BlockUtils.getColorMultiplier(world, pos, state, index);
-                    model[i].render(renderState, j * 4, j * 4 + 4, new IconTransformation(texture));
+                    model[i].copy().apply(new Translation(Vector3.fromBlockPos(pos))).render(renderState, j * 4, j * 4 + 4, new IconTransformation(texture));
                 }
             }
 
-            parentBuffer.finishDrawing();
-            ModelCache.put(key, new SimpleBakedModel(parentBuffer.bake()));
+            return true;
         }
+        else {
+            String key = BlockUtils.getRenderKey(world, pos, state);
 
-        return RenderUtils.renderModel(ModelCache.get(key), world, pos, state, buffer);
+            if(!ModelCache.contains(key)) {
+                CCRenderState renderState = CCRenderState.instance();
+                BakingVertexBuffer parentBuffer = BakingVertexBuffer.create();
+                parentBuffer.begin(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
+                renderState.reset();
+                renderState.bind(parentBuffer);
+
+                for(int i = 0; i < model.length; i++) {
+                    for(int j = 0; j < 6; j++) {
+                        int index = i * 100 + j;
+                        TextureAtlasSprite texture = BlockUtils.getTexture(world, pos, state, index);
+                        renderState.baseColour = BlockUtils.getColorMultiplier(world, pos, state, index);
+                        model[i].render(renderState, j * 4, j * 4 + 4, new IconTransformation(texture));
+                    }
+                }
+
+                parentBuffer.finishDrawing();
+                ModelCache.put(key, new SimpleBakedModel(parentBuffer.bake()));
+            }
+
+            return RenderUtils.renderModel(ModelCache.get(key), world, pos, state, buffer);
+        }
     }
 
     @Override
@@ -82,6 +108,8 @@ public class RenderBlockSpecial implements IBlockRenderingHandler {
     public void renderItem(ItemStack stack, ItemCameraTransforms.TransformType transformType) {
         CCModel[] model = ModelUtils.generate(ItemUtils.getRenderBounds(stack));
         String key = ItemUtils.getRenderKey(stack);
+
+        //TODO: make items glow too!
 
         if(!ModelCache.contains(key)) {
             CCRenderState renderState = CCRenderState.instance();

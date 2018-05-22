@@ -6,19 +6,19 @@ itemGroup.magicmayhem.name=§9Wuffy's Magic Mayhem
 
 #Blocks
 tile.magicmayhem.glowing_pandora.name=Glowing Pandora
+tile.magicmayhem.leaves.dark_infused.name=§9Dark Infused Leaves
+tile.magicmayhem.leaves.starlight.name=§eStarlight Leaves
+tile.magicmayhem.leaves.enchanted.name=§bEnchanted Leaves
+tile.magicmayhem.leaves.ashened.name=§8Ashened Leaves
 
 tile.magicmayhem.dark_infused_wood.name=§9Dark Infused Wood
-tile.magicmayhem.dark_infused_leaves.name=§9Dark Infused Leaves
 tile.magicmayhem.dark_infused_planks.name=§9Dark Infused Planks
 tile.magicmayhem.starlight_wood.name=§eStarlight Wood
-tile.magicmayhem.starlight_leaves.name=§eStarlight Leaves
 tile.magicmayhem.starlight_planks.name=§eStarlight Planks
 tile.magicmayhem.enchanted_wood.name=§bEnchanted Wood
 tile.magicmayhem.enchanted_planks.name=§bEnchanted Planks
-tile.magicmayhem.enchanted_leaves.name=§bEnchanted Leaves
 tile.magicmayhem.ashened_wood.name=§8Ashened Wood
 tile.magicmayhem.ashened_planks.name=§8Ashened Planks
-tile.magicmayhem.ashened_leaves.name=§8Ashened Leaves
 tile.magicmayhem.totem_top.name=Totem Top
 tile.magicmayhem.totem_upgrade_base.name=Totem Upgrade Base
 
