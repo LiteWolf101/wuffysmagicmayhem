@@ -10,6 +10,8 @@ item.bubbleshroom.pink.name=Pink Bubbleshroom
 item.wmm_power_upgrade.name=Power Upgrade
 item.wmm_speed_upgrade.name=Speed Upgrade
 item.wmm_range_upgrade.name=Range Upgrade
+item.wmm_book_special.name=§bSpecial Book
+item.wmm_book_index.name=§dMagic Mayhem Index Book
 
 #Blocks
 tile.dark_infused_wood.name=§9Dark Infused Wood
@@ -27,6 +29,7 @@ tile.ashened_planks.name=§8Ashened Planks
 tile.ashened_leaves.name=§8Ashened Leaves
 tile.totem_top.name=Totem Top
 tile.totem_upgrade_base.name=Totem Upgrade Base
+tile.magic_gearbox.name=Magic Gearbox
 
 #Creative Tab
 itemGroup.wuffysmagicmayhem=§9Wuffy's Magic Mayhem

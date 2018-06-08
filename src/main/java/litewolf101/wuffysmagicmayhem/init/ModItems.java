@@ -24,6 +24,8 @@ public class ModItems {
 	public static Item wmmPowerUpgrade;
 	public static Item wmmRangeUpgrade;
 	public static Item wmmSpeedUpgrade;
+	public static Item bookSpecial;
+	public static Item bookIndex;
 
 	public static void init() {
 		darkInfusedSapling = new DarkInfusedSapling("dark_infused_sapling").setMaxStackSize(64).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
@@ -31,6 +33,8 @@ public class ModItems {
 		wmmPowerUpgrade = new ItemPowerUpgrade("wmm_power_upgrade").setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
 		wmmRangeUpgrade = new ItemRangeUpgrade("wmm_range_upgrade").setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
 		wmmSpeedUpgrade = new ItemSpeedUpgrade("wmm_speed_upgrade").setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
+		bookSpecial = new ItemBookSpecial("wmm_book_special").setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
+		bookIndex = new ItemBookIndex("wmm_book_index").setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
 	}
 
 	@SubscribeEvent
@@ -40,6 +44,8 @@ public class ModItems {
 		event.getRegistry().registerAll(wmmPowerUpgrade);
 		event.getRegistry().registerAll(wmmRangeUpgrade);
 		event.getRegistry().registerAll(wmmSpeedUpgrade);
+		event.getRegistry().registerAll(bookSpecial);
+		event.getRegistry().registerAll(bookIndex);
 	}
 
 	@SubscribeEvent
@@ -51,6 +57,8 @@ public class ModItems {
 		registerRender(wmmPowerUpgrade);
 		registerRender(wmmRangeUpgrade);
 		registerRender(wmmSpeedUpgrade);
+		registerRender(bookSpecial);
+		registerRender(bookIndex);
 	}
 
 	private static void registerRender(Item item) {
