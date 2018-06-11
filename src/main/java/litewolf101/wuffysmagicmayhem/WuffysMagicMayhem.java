@@ -1,5 +1,6 @@
 package litewolf101.wuffysmagicmayhem;
 
+import litewolf101.wuffysmagicmayhem.commands.CommandWuffysMagicMayhem;
 import litewolf101.wuffysmagicmayhem.init.ModBlocks;
 import litewolf101.wuffysmagicmayhem.init.ModItems;
 import litewolf101.wuffysmagicmayhem.proxy.CommonProxy;
@@ -11,6 +12,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
 @Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION, acceptedMinecraftVersions = Reference.ACCEPTED_MINECRAFT_VERSIONS)
 public class WuffysMagicMayhem {
@@ -54,6 +56,11 @@ public class WuffysMagicMayhem {
 		proxy.postInit(event);
 		System.out.println(Reference.MODID + ":Fix Issues: Bubbleshroom");
 		System.out.println(Reference.MODID + ":I like to make blocks look pretty! :D");
+	}
+
+	@EventHandler
+	public void serverLoad(FMLServerStartingEvent event) {
+		event.registerServerCommand(new CommandWuffysMagicMayhem());
 	}
 }
 

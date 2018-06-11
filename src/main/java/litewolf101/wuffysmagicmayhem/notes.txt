@@ -1,0 +1,29 @@
+The following text document is only for notes because I forget things easily.
+
+//TODO Read @notes.txt
+
+#Fix
+Fix Bubbleshrooms
+Fix Glowflowers
+Fix Strange Grass model and texture to fit with grass color properties
+Fix code to make more efficient
+
+#Add
+Add block models to GUI buttons
+Add rotation state properties to Magic Gearbox
+Add Biomes
+Add Mobs
+Add Bosses
+Add pictures to special book
+Add recipes
+Add achievements
+Add eggs (Not the food kind)
+Add config for difficulty, tree and biome spawn rates and loot values
+Add custom particles
+Add matrix line draw to mob in BlockTotemTop TE
+
+#Remove
+Remove recipe for Special Book. It's supposed to be a rare mob drop(dropped from mod boss) or loot(1/2048)
+Remove unnecessary code. Make code efficient so fps doesn't tank
+Remove sleep
+Remove Herobrine
