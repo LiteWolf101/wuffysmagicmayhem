@@ -24,7 +24,7 @@ import java.util.List;
  * Created by LiteWolf101 on 6/9/2018.
  */
 public class CommandWuffysMagicMayhem extends CommandBase {
-    private final String name = "wuffysmagicmauhem";
+    private final String name = "wuffysmagicmayhem";
     private final List<String> commands = new ArrayList<String>();
 
     public CommandWuffysMagicMayhem() {
@@ -53,7 +53,7 @@ public class CommandWuffysMagicMayhem extends CommandBase {
             throw new WrongUsageException(getUsage(sender));
         }
         if (args[0].equals("data")) {
-            sender.sendMessage(new TextComponentString(TextFormatting.BLUE + "MOD: " + TextFormatting.RESET + Reference.NAME + "\n" + TextFormatting.BLUE + "VERSION: " + TextFormatting.RESET + Reference.VERSION + "\n" + TextFormatting.BLUE + "MINECRAFT VERSION: " + TextFormatting.RESET + Reference.ACCEPTED_MINECRAFT_VERSIONS));
+            sender.sendMessage(new TextComponentString(TextFormatting.BLUE + "\u2605" + "MOD: " + TextFormatting.RESET + Reference.NAME + "\n" + TextFormatting.BLUE + "\u2605" + "VERSION: " + TextFormatting.RESET + Reference.VERSION + "\n" + TextFormatting.BLUE + "\u2605" + "MINECRAFT VERSION: " + TextFormatting.RESET + Reference.ACCEPTED_MINECRAFT_VERSIONS));
         }
     }
 

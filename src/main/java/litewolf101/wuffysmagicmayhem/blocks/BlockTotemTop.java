@@ -66,7 +66,7 @@ public class BlockTotemTop extends Block {
                 Random randomPitch = new Random();
                 float pitch = randomPitch.nextFloat()*(1.3F-0.7F)+0.7F;
 
-                entity.attackEntityFrom(DamageSource.GENERIC, 4);
+                entity.attackEntityFrom(DamageSource.FALL, 4);
                 world.playSound(null, pos, WMMSoundHandler.TOTEM_HIT, SoundCategory.BLOCKS, 0.5F, pitch);
             }
         }

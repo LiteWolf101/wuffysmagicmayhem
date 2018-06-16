@@ -111,7 +111,6 @@ public class ModBlocks {
 		event.getRegistry().register(totemUpgradeBase);
 		event.getRegistry().register(strangeGrass);
 		event.getRegistry().register(magicGearbox);
-
 	}
 
 	@SubscribeEvent
@@ -132,8 +131,8 @@ public class ModBlocks {
 		event.getRegistry().register(new ItemBlock(blockBubbleshroom).setRegistryName(blockBubbleshroom.getRegistryName()));
 		event.getRegistry().register(new ItemBlock(totemTop).setRegistryName(totemTop.getRegistryName()));
 		event.getRegistry().register(new ItemBlock(totemUpgradeBase).setRegistryName(totemUpgradeBase.getRegistryName()));
-		event.getRegistry().register(new ItemBlockBase(strangeGrass).setRegistryName(strangeGrass.getRegistryName()));
-		event.getRegistry().register(new ItemBlockBase(magicGearbox).setRegistryName(magicGearbox.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(strangeGrass).setRegistryName(strangeGrass.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(magicGearbox).setRegistryName(magicGearbox.getRegistryName()));
 	}
 
 	@SubscribeEvent

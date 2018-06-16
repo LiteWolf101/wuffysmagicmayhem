@@ -29,7 +29,7 @@ public class ButtonItemRendered extends GuiButton{
     {
         if (this.visible)
         {
-            ItemStack itemStack = new ItemStack(Item.getItemFromBlock(ModBlocks.magicGearbox));
+            ItemStack itemStack = new ItemStack(Item.getItemFromBlock(ModBlocks.totemUpgradeBase));
             FontRenderer fontrenderer = mc.fontRenderer;
             mc.getTextureManager().bindTexture(textureBookIndex3);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);

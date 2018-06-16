@@ -81,7 +81,6 @@ public class GUIItemBookIndex extends GuiScreen {
             System.out.println("Clicked Blocks");
             this.buttonList.add(new ButtonHome(4, this.width / 2 - 8, this.height - 20));
             this.buttonList.add(new ButtonItemRendered(9, this.width / 2 - 8, this.height - 50));
-            //drawPageInfo();
         }
         if(button.id == 1){
             System.out.println("Clicked Items");

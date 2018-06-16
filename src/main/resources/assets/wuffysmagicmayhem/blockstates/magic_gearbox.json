@@ -1,7 +1,8 @@
 {
   "variants": {
-    "normal": [
-      { "model": "wuffysmagicmayhem:magic_gearbox" }
-    ]
+    "facing=north": { "model": "wuffysmagicmayhem:magic_gearbox" },
+    "facing=east": { "model": "wuffysmagicmayhem:magic_gearbox", "y": 90 },
+    "facing=south": { "model": "wuffysmagicmayhem:magic_gearbox", "y": 180 },
+    "facing=west": { "model": "wuffysmagicmayhem:magic_gearbox", "y": 270 }
   }
 }

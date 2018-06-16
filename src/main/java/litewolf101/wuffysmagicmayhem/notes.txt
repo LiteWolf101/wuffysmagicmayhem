@@ -3,15 +3,15 @@ The following text document is only for notes because I forget things easily.
 //TODO Read @notes.txt
 
 #Fix
-Fix Bubbleshrooms
-Fix Glowflowers
+//Fix Bubbleshrooms
+//Fix Glowflowers
 Fix Strange Grass model and texture to fit with grass color properties
 Fix code to make more efficient
+Fix Biomes
+Fix Magic Gearbox
 
 #Add
-Add block models to GUI buttons
 Add rotation state properties to Magic Gearbox
-Add Biomes
 Add Mobs
 Add Bosses
 Add pictures to special book
