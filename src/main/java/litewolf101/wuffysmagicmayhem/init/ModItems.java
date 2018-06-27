@@ -2,6 +2,7 @@ package litewolf101.wuffysmagicmayhem.init;
 
 import litewolf101.wuffysmagicmayhem.Reference;
 import litewolf101.wuffysmagicmayhem.WuffysMagicMayhem;
+import litewolf101.wuffysmagicmayhem.handlers.WMMSoundHandler;
 import litewolf101.wuffysmagicmayhem.items.*;
 import litewolf101.wuffysmagicmayhem.handlers.EnumHandler;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -26,6 +27,7 @@ public class ModItems {
 	public static Item wmmSpeedUpgrade;
 	public static Item bookSpecial;
 	public static Item bookIndex;
+	public static Item wmmRecord1;
 
 	public static void init() {
 		darkInfusedSapling = new DarkInfusedSapling("dark_infused_sapling").setMaxStackSize(64).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
@@ -35,6 +37,7 @@ public class ModItems {
 		wmmSpeedUpgrade = new ItemSpeedUpgrade("wmm_speed_upgrade").setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
 		bookSpecial = new ItemBookSpecial("wmm_book_special").setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
 		bookIndex = new ItemBookIndex("wmm_book_index").setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
+		wmmRecord1 = new ItemWWMRecord1("wmm_record_1", WMMSoundHandler.WMM_RECORD_WIZARD).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
 	}
 
 	@SubscribeEvent
@@ -46,6 +49,7 @@ public class ModItems {
 		event.getRegistry().registerAll(wmmSpeedUpgrade);
 		event.getRegistry().registerAll(bookSpecial);
 		event.getRegistry().registerAll(bookIndex);
+		event.getRegistry().registerAll(wmmRecord1);
 	}
 
 	@SubscribeEvent
@@ -59,6 +63,7 @@ public class ModItems {
 		registerRender(wmmSpeedUpgrade);
 		registerRender(bookSpecial);
 		registerRender(bookIndex);
+		registerRender(wmmRecord1);
 	}
 
 	private static void registerRender(Item item) {
@@ -68,5 +73,4 @@ public class ModItems {
 	private static void registerRender(Item item, int meta, String fileName) {
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(new ResourceLocation(Reference.MODID, fileName), "inventory"));
 	}
-
 }

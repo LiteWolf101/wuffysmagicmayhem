@@ -34,8 +34,11 @@ public class BiomeSmoldered extends Biome {
         decorator.flowersPerChunk = 0;
         properties.setTemperature(2.0F);
         properties.setHeightVariation(0.0F);
+        properties.setRainDisabled();
 
 
+
+        spawnableMonsterList.clear();
         spawnableMonsterList.add(new SpawnListEntry(EntityMagmaCube.class, 8, 1, 1));
         spawnableMonsterList.add(new SpawnListEntry(EntityBlaze.class, 7, 1, 2));
         spawnableMonsterList.add(new SpawnListEntry(EntityHusk.class, 8, 2, 5));

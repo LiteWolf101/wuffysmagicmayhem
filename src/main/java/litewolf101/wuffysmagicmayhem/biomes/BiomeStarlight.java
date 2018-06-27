@@ -6,6 +6,7 @@ import net.minecraft.block.BlockTallGrass;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.monster.*;
+import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntitySheep;
@@ -38,6 +39,7 @@ public class BiomeStarlight extends Biome {
         properties.setTemperature(0.2F);
         properties.setHeightVariation(0.01F);
 
+        spawnableMonsterList.clear();
         spawnableMonsterList.add(new SpawnListEntry(EntityZombie.class, 7, 1, 3));
         spawnableMonsterList.add(new SpawnListEntry(EntityCreeper.class, 4, 2, 3));
         spawnableMonsterList.add(new SpawnListEntry(EntitySkeleton.class, 10, 1, 4));
@@ -45,6 +47,7 @@ public class BiomeStarlight extends Biome {
         spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 2, 1, 2));
         //Add Darkened Knight
 
+        spawnableCreatureList.clear();
         spawnableCreatureList.add(new SpawnListEntry(EntityPig.class, 3, 2, 5));
         spawnableCreatureList.add(new SpawnListEntry(EntitySheep.class, 5, 1, 4));
         spawnableCreatureList.add(new SpawnListEntry(EntityCow.class, 6, 3, 8));

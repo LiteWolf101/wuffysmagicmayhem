@@ -37,11 +37,13 @@ public class BiomeEnchanted extends Biome {
         properties.setTemperature(1.2F);
         properties.setHeightVariation(0.0F);
 
-        spawnableMonsterList.add(new SpawnListEntry(EntityEnderman.class, 1, 1, 1));
-        spawnableMonsterList.add(new SpawnListEntry(EntityWitch.class, 4, 2, 4));
-        spawnableMonsterList.add(new SpawnListEntry(EntityEvoker.class, 1, 1, 1));
+        spawnableMonsterList.clear();
+        spawnableMonsterList.add(new SpawnListEntry(EntityEnderman.class, 100, 1, 1));
+        spawnableMonsterList.add(new SpawnListEntry(EntityWitch.class, 30, 2, 4));
+        spawnableMonsterList.add(new SpawnListEntry(EntityVindicator.class, 100, 1, 1));
 
 
+        spawnableCreatureList.clear();
         spawnableCreatureList.add(new SpawnListEntry(EntityPig.class, 3, 2, 5));
         spawnableCreatureList.add(new SpawnListEntry(EntitySheep.class, 5, 1, 4));
         spawnableCreatureList.add(new SpawnListEntry(EntityCow.class, 6, 3, 8));

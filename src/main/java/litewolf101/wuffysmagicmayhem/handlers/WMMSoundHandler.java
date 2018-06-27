@@ -11,9 +11,11 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 public class WMMSoundHandler {
 
     public static SoundEvent TOTEM_HIT;
+    public static SoundEvent WMM_RECORD_WIZARD;
 
     public static void init(){
         TOTEM_HIT = registerSounds("block.totem_top.totem_hit");
+        WMM_RECORD_WIZARD = registerSounds("record.epic_wizards");
     }
 
     private static SoundEvent registerSounds(String name){

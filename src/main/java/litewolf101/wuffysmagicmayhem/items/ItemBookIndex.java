@@ -28,6 +28,7 @@ public class ItemBookIndex extends Item{
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         player.openGui(WuffysMagicMayhem.instance, GUIHandler.ITEM_BOOK_INDEX, world, 0, 0, 0);
         return new ActionResult<>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
+        //add advancement: Title:"Do u kno de wey?" Desc: "You know it now."
     }
 
     @Override

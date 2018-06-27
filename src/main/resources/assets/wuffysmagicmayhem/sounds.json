@@ -9,5 +9,16 @@
 
       }
     ]
+  },
+  "record.epic_wizards": {
+    "category": "record",
+    "subtitle": "record.epic_wizards",
+    "sounds": [
+      {
+        "name": "wuffysmagicmayhem:record/epic_wizards",
+        "stream": true
+
+      }
+    ]
   }
 }

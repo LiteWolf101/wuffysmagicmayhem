@@ -3,6 +3,7 @@ package litewolf101.wuffysmagicmayhem.proxy;
 import litewolf101.wuffysmagicmayhem.Reference;
 import litewolf101.wuffysmagicmayhem.WuffysMagicMayhem;
 import litewolf101.wuffysmagicmayhem.client.wmmgui.GUIHandler;
+import litewolf101.wuffysmagicmayhem.handlers.ColorHandler;
 import litewolf101.wuffysmagicmayhem.handlers.WMMSoundHandler;
 import litewolf101.wuffysmagicmayhem.init.ModBlocks;
 import litewolf101.wuffysmagicmayhem.init.ModItems;
@@ -30,6 +31,7 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void init(FMLInitializationEvent event) {
 		WMMSoundHandler.init();
+		ColorHandler.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(WuffysMagicMayhem.instance, new GUIHandler());
 	}
 

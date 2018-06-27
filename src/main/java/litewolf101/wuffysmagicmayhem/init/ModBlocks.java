@@ -3,7 +3,6 @@ package litewolf101.wuffysmagicmayhem.init;
 import litewolf101.wuffysmagicmayhem.Reference;
 import litewolf101.wuffysmagicmayhem.WuffysMagicMayhem;
 import litewolf101.wuffysmagicmayhem.blocks.*;
-import litewolf101.wuffysmagicmayhem.blocks.itemblock.ItemBlockBase;
 import litewolf101.wuffysmagicmayhem.handlers.EnumHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -16,7 +15,6 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
  * Created by LiteWolf101 on 11/17/2017.
@@ -43,6 +41,8 @@ public class ModBlocks {
 	public static Block totemUpgradeBase;
 	public static Block strangeGrass;
 	public static Block magicGearbox;
+	public static Block devourer;
+	public static Block shimmeringGrass;
 
 	public static void init() {
 		darkInfusedWood = new DarkInfusedWood("dark_infused_wood", Material.WOOD).setHardness(1.0f).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB).setLightLevel(0.2f);
@@ -79,15 +79,19 @@ public class ModBlocks {
 
 		glowFlowers = new GlowFlowers("glow_flowers", Material.GRASS).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
 
-		blockBubbleshroom = new BlockBubbleshroom("block_bubbleshroom", Material.GRASS).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB).setLightLevel(0.5f);
+		blockBubbleshroom = new BlockBubbleshroom("block_bubbleshroom", Material.GRASS).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB).setLightLevel(0.9f);
 
 		totemTop = new BlockTotemTop("totem_top", Material.ROCK).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
 
 		totemUpgradeBase = new BlockTotemUpgradeBase("totem_upgrade_base", Material.ROCK).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
 
-		strangeGrass = new BlockStrangeGrass("strange_grass", Material.VINE).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
+		strangeGrass = new BlockStrangeGrass("strange_grass", Material.GRASS).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB).setLightLevel(0.7F);
 
-		magicGearbox = new BlockMagicGearbox("magic_gearbox", Material.ROCK).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
+		magicGearbox = new BlockMagicGearbox("magic_gearbox").setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
+
+		devourer = new BlockDevourer("devourer", Material.STRUCTURE_VOID).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
+
+		shimmeringGrass = new BlockShimmeringGrass("shimmering_grass", Material.GRASS).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
 
 	}
 
@@ -111,6 +115,8 @@ public class ModBlocks {
 		event.getRegistry().register(totemUpgradeBase);
 		event.getRegistry().register(strangeGrass);
 		event.getRegistry().register(magicGearbox);
+		event.getRegistry().register(devourer);
+		event.getRegistry().register(shimmeringGrass);
 	}
 
 	@SubscribeEvent
@@ -133,6 +139,8 @@ public class ModBlocks {
 		event.getRegistry().register(new ItemBlock(totemUpgradeBase).setRegistryName(totemUpgradeBase.getRegistryName()));
 		event.getRegistry().register(new ItemBlock(strangeGrass).setRegistryName(strangeGrass.getRegistryName()));
 		event.getRegistry().register(new ItemBlock(magicGearbox).setRegistryName(magicGearbox.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(devourer).setRegistryName(devourer.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(shimmeringGrass).setRegistryName(shimmeringGrass.getRegistryName()));
 	}
 
 	@SubscribeEvent
@@ -157,6 +165,8 @@ public class ModBlocks {
 		registerRender(Item.getItemFromBlock(totemUpgradeBase));
 		registerRender(Item.getItemFromBlock(strangeGrass));
 		registerRender(Item.getItemFromBlock(magicGearbox));
+		registerRender(Item.getItemFromBlock(devourer));
+		registerRender(Item.getItemFromBlock(shimmeringGrass));
 	}
 
 	public static void registerRender(Item item) {

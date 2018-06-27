@@ -1,7 +1,10 @@
 {
   "variants": {
-    "inventory": {"model": "wuffysmagicmayhem:item/strange_grass_2"},
-    "has_bulb=true": {"model": "wuffysmagicmayhem:strange_grass_2"},
-    "has_bulb=false": {"model": "wuffysmagicmayhem:strange_grass_1"}
+    "has_bulb=bulb": [
+      { "model": "wuffysmagicmayhem:strange_grass_bulb" }
+    ],
+    "has_bulb=no_bulb": [
+      { "model": "wuffysmagicmayhem:strange_grass_no_bulb" }
+    ]
   }
 }

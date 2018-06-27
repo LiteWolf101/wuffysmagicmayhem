@@ -1,83 +1,49 @@
 package litewolf101.wuffysmagicmayhem.blocks;
 
-import litewolf101.wuffysmagicmayhem.blocks.itemblock.ISubtypeHolder;
 import litewolf101.wuffysmagicmayhem.handlers.EnumHandler;
-import net.minecraft.block.BlockBush;
-import net.minecraft.block.IGrowable;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyBool;
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
-import net.minecraftforge.common.IShearable;
-
-import javax.annotation.Nonnull;
-import java.util.List;
-import java.util.Random;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.math.MathHelper;
 
 /**
  * Created by LiteWolf101 on 5/20/2018.
  */
-public class BlockStrangeGrass extends BlockBush implements IGrowable, IShearable {
+public class BlockStrangeGrass extends BlockBush {
     public BlockStrangeGrass(String name, Material material) {
-        super(material);
-        setUnlocalizedName(name);
+        super();
         setRegistryName(name);
+        setUnlocalizedName(name);
         setSoundType(SoundType.PLANT);
-        setDefaultState(blockState.getBaseState().withProperty(hasBulb, false));
     }
-    public static final PropertyBool hasBulb = PropertyBool.create("has_bulb");
+    public static final PropertyEnum<EnumHandler.StrangeGrassType> HAS_BULB_PROPERTY_ENUM = PropertyEnum.create("has_bulb", EnumHandler.StrangeGrassType.class);
 
     @Override
-    protected BlockStateContainer createBlockState()
-    {
-        return new BlockStateContainer(this, new IProperty[] {hasBulb});
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, HAS_BULB_PROPERTY_ENUM);
     }
 
     @Override
     public int getMetaFromState(IBlockState state) {
-        return (state.getValue(hasBulb)).booleanValue() ? 1 : 0;
+        return state.getValue(HAS_BULB_PROPERTY_ENUM).ordinal();
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public IBlockState getStateFromMeta(int meta) {
-        return this.getDefaultState().withProperty(hasBulb, Boolean.valueOf(meta == 1));
+        EnumHandler.StrangeGrassType type = EnumHandler.StrangeGrassType.values()[MathHelper.clamp(meta, 0, EnumHandler.StrangeGrassType.values().length)];
+        return getDefaultState().withProperty(HAS_BULB_PROPERTY_ENUM, type);
     }
 
     @Override
-    public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
-        return true;
+    public void getSubBlocks(CreativeTabs par2CreativeTabs, NonNullList<ItemStack> stackList) {
+        for (int i = 0; i < EnumHandler.StrangeGrassType.values().length; i++) {
+            stackList.add(new ItemStack(this, 1, i));
+        }
     }
-
-    @Override
-    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-        return true;
-    }
-
-    @Override
-    public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-
-    }
-
-    @Override
-    public boolean isShearable(@Nonnull ItemStack item, IBlockAccess world, BlockPos pos) {
-        return true;
-    }
-
-    @Override
-    public List<ItemStack> onSheared(@Nonnull ItemStack item, IBlockAccess world, BlockPos pos, int fortune) {
-        return null;
-    }
-
-    @Override
-    public boolean isReplaceable(IBlockAccess worldIn, BlockPos pos)
-    {
-        return true;
-    }
-
 }

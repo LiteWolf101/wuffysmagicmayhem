@@ -20,10 +20,10 @@ import net.minecraft.world.World;
  * Created by LiteWolf101 on 5/22/2018.
  */
 public class BlockMagicGearbox extends Block {
-    public BlockMagicGearbox(String name, Material material){
-        super(material);
-        setUnlocalizedName(name);
+    public BlockMagicGearbox(String name){
+        super(Material.ROCK);
         setRegistryName(name);
+        setUnlocalizedName(name);
         setSoundType(SoundType.METAL);
         setHarvestLevel("pickaxe", 2);
         blockResistance = 7000;

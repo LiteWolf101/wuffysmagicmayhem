@@ -29,6 +29,7 @@ public class CommandWuffysMagicMayhem extends CommandBase {
 
     public CommandWuffysMagicMayhem() {
         commands.add("data");
+        commands.add("boop");
     }
 
     @Override
@@ -39,7 +40,8 @@ public class CommandWuffysMagicMayhem extends CommandBase {
     @Override
     public String getUsage(ICommandSender sender) {
         return "wuffysmagicmayhem <command>\n"
-            + "data: Displays The mod name, current version of mod and current version of minecraft.";
+            + "data: Displays The mod name, current version of mod and current version of minecraft.\n"
+            + "boop: Boops your nose.";
     }
 
     @Override
@@ -54,6 +56,9 @@ public class CommandWuffysMagicMayhem extends CommandBase {
         }
         if (args[0].equals("data")) {
             sender.sendMessage(new TextComponentString(TextFormatting.BLUE + "\u2605" + "MOD: " + TextFormatting.RESET + Reference.NAME + "\n" + TextFormatting.BLUE + "\u2605" + "VERSION: " + TextFormatting.RESET + Reference.VERSION + "\n" + TextFormatting.BLUE + "\u2605" + "MINECRAFT VERSION: " + TextFormatting.RESET + Reference.ACCEPTED_MINECRAFT_VERSIONS));
+        }
+        if (args[0].equals("boop")) {
+            sender.sendMessage(new TextComponentString(TextFormatting.ITALIC + "Boops you back"));
         }
     }
 

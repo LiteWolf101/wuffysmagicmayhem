@@ -6,6 +6,7 @@ import net.minecraft.block.BlockTallGrass;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.monster.*;
+import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntitySheep;
@@ -14,7 +15,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.chunk.ChunkPrimer;
+import net.minecraft.world.gen.NoiseGeneratorPerlin;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraft.world.gen.feature.WorldGenBigTree;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
@@ -29,14 +32,18 @@ import java.util.Random;
  */
 public class BiomeDarkened extends Biome {
     private static BiomeProperties properties = new BiomeProperties("Darkened Forest");
+    protected static final NoiseGeneratorPerlin DARK_COLOR_NOISE = new NoiseGeneratorPerlin(new Random(1176L), 1);
     public BiomeDarkened() {
         super(properties);
         this.setRegistryName(new ResourceLocation(Reference.MODID, "biome_darkened"));
         decorator.treesPerChunk = 0;
         decorator.flowersPerChunk = 1;
         properties.setTemperature(0.5F);
-        properties.setHeightVariation(0.0001F);
+        properties.setHeightVariation(0.0F);
+        decorator.sandPatchesPerChunk = 0;
+        decorator.grassPerChunk = 10;
 
+        spawnableMonsterList.clear();
         spawnableMonsterList.add(new SpawnListEntry(EntityZombie.class, 7, 1, 3));
         spawnableMonsterList.add(new SpawnListEntry(EntityCreeper.class, 4, 2, 3));
         spawnableMonsterList.add(new SpawnListEntry(EntitySkeleton.class, 10, 1, 4));
@@ -46,9 +53,11 @@ public class BiomeDarkened extends Biome {
         spawnableMonsterList.add(new SpawnListEntry(EntityMagmaCube.class, 4, 1, 1));
         //Add Darkened Knight
 
+        spawnableCreatureList.clear();
         spawnableCreatureList.add(new SpawnListEntry(EntityPig.class, 3, 2, 5));
         spawnableCreatureList.add(new SpawnListEntry(EntitySheep.class, 5, 1, 4));
         spawnableCreatureList.add(new SpawnListEntry(EntityCow.class, 6, 3, 8));
+        spawnableCreatureList.remove(new SpawnListEntry(EntityChicken.class, 1, 100, 100));
     }
 
     @Override
@@ -68,8 +77,11 @@ public class BiomeDarkened extends Biome {
     @Override
     @SideOnly(Side.CLIENT)
     public int getGrassColorAtPos(BlockPos pos) {
-        return 2031677;
+        double d0 = DARK_COLOR_NOISE.getValue((double)pos.getX() * 0.0755D, (double)pos.getZ() * 0.0755D);
+        return d0 < -0.1D ? 2688093 : 2031677;
     }
+
+    //TODO Generate Custom flower decor with @BlockShimmeringGrass
 
     @Override
     @SideOnly(Side.CLIENT)

@@ -9,6 +9,7 @@ Fix Strange Grass model and texture to fit with grass color properties
 Fix code to make more efficient
 Fix Biomes
 Fix Magic Gearbox
+Fix Grass Coloration...Somehow
 
 #Add
 Add rotation state properties to Magic Gearbox
@@ -21,6 +22,7 @@ Add eggs (Not the food kind)
 Add config for difficulty, tree and biome spawn rates and loot values
 Add custom particles
 Add matrix line draw to mob in BlockTotemTop TE
+Add possible structures?
 
 #Remove
 Remove recipe for Special Book. It's supposed to be a rare mob drop(dropped from mod boss) or loot(1/2048)
