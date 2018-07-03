@@ -1,5 +1,7 @@
 package litewolf101.wuffysmagicmayhem.blocks;
 
+import litewolf101.wuffysmagicmayhem.WuffysMagicMayhem;
+import litewolf101.wuffysmagicmayhem.client.fx.WMMParticleType;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -47,6 +49,8 @@ public class BlockShimmeringGrass extends BlockBush {
         double randomX = random.nextInt(50);
         double randomY = random.nextInt(3);
         double randomZ = random.nextInt(50);
-        world.spawnParticle(EnumParticleTypes.SPELL_WITCH, d0 + (randomX / 5) - 5, d1 + randomY, d2 + (randomZ / 5) - 5, 0.0D, 0.1D, 0.0D);
+        if (!world.isDaytime()) {
+            WuffysMagicMayhem.proxy.spawnParticle(world, WMMParticleType.SHIMMERING_GRASS, d0 + (randomX / 5) - 5, d1 + randomY, d2 + (randomZ / 5) - 5, 0.0D, 0.1D, 0.0D);
+        }
     }
 }

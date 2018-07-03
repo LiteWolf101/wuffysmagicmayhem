@@ -1,6 +1,8 @@
 package litewolf101.wuffysmagicmayhem.mobs;
 
 
+import litewolf101.wuffysmagicmayhem.WuffysMagicMayhem;
+import litewolf101.wuffysmagicmayhem.client.fx.WMMParticleType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -11,6 +13,7 @@ import net.minecraft.entity.passive.EntityAmbientCreature;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -19,6 +22,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 
 /**
  * Created by LiteWolf101 on 6/16/2018.
@@ -26,15 +30,22 @@ import javax.annotation.Nullable;
 public class MobFloatingStar extends EntityAmbientCreature {
     public MobFloatingStar(World worldIn) {
         super(worldIn);
+        setSize(1.0F, 1.0F);
     }
+
     private BlockPos spawnPosition;
+
+    @Override
+    protected void entityInit() {
+        super.entityInit();
+    }
 
     @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
-        getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10.0D);
-        getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5D);
-        getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(1.0D);
+        getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(4.0D);
+        getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.1D);
+        getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(0.5D);
     }
 
     @Override
@@ -70,8 +81,8 @@ public class MobFloatingStar extends EntityAmbientCreature {
     @Override
     public void onUpdate() {
         super.onUpdate();
-
-        this.motionY *= 0.6000000238418579D;
+        spawnParticles(this);
+        this.motionY *= 0.0000000238418579D;
     }
 
     @Override
@@ -90,14 +101,15 @@ public class MobFloatingStar extends EntityAmbientCreature {
         double d0 = (double) this.spawnPosition.getX() + 0.5D - this.posX;
         double d1 = (double) this.spawnPosition.getY() + 0.1D - this.posY;
         double d2 = (double) this.spawnPosition.getZ() + 0.5D - this.posZ;
-        this.motionX += (Math.signum(d0) * 0.5D - this.motionX) * 0.10000000149011612D;
-        this.motionY += (Math.signum(d1) * 0.699999988079071D - this.motionY) * 0.10000000149011612D;
-        this.motionZ += (Math.signum(d2) * 0.5D - this.motionZ) * 0.10000000149011612D;
+        this.motionX += (Math.signum(d0) * 0.2D - this.motionX) * 0.10000000149011612D;
+        this.motionY += (Math.signum(d1) * 0.199999988079071D - this.motionY) * 0.10000000149011612D;
+        this.motionZ += (Math.signum(d2) * 0.2D - this.motionZ) * 0.10000000149011612D;
         float f = (float) (MathHelper.atan2(this.motionZ, this.motionX) * (180D / Math.PI)) - 90.0F;
         float f1 = MathHelper.wrapDegrees(f - this.rotationYaw);
-        this.moveForward = 0.5F;
+        this.moveForward = 0.2F;
         this.rotationYaw += f1;
         // End copy
+        this.experienceValue = 10;
     }
 
     @Override
@@ -121,12 +133,7 @@ public class MobFloatingStar extends EntityAmbientCreature {
     // [VanillaCopy] EntityBat.getCanSpawnHere. Edits noted.
     @Override
     public boolean getCanSpawnHere() {
-        BlockPos blockpos = new BlockPos(this.posX, this.getEntityBoundingBox().minY, this.posZ);
-
-        return blockpos.getY() < this.world.getSeaLevel()
-                && !this.rand.nextBoolean()
-                && this.world.getLightFromNeighbors(blockpos) <= this.rand.nextInt(4)
-                && super.getCanSpawnHere();
+        return true;
     }
 
     @Override
@@ -135,9 +142,27 @@ public class MobFloatingStar extends EntityAmbientCreature {
         return 15728880;
     }
 
-    public float getGlowBrightness() {
-        return (float) Math.sin(this.ticksExisted / 7.0) + 1F;
+    //public float getGlowBrightness() {
+    //    return (float) Math.sin(this.ticksExisted / 7.0) + 1F;
+    //}
+
+    public void spawnParticles(Entity entity){
+        double d0 = entity.posX - 0.5;
+        double d1 = entity.posY + 0.5;
+        double d2 = entity.posZ - 0.5;
+        Random random = new Random();
+        double randomX = random.nextInt(10);
+        double randomY = random.nextInt(10);
+        double randomZ = random.nextInt(10);
+        WuffysMagicMayhem.proxy.spawnParticle(world, WMMParticleType.SHIMMERING_GRASS, d0 + (randomX / 10), d1 + (randomY / 10), d2 + (randomZ / 10), 0.0D, 0.1D, 0.0D);
     }
+
+    @Override
+    public int getMaxSpawnedInChunk() {
+        return 1;
+    }
+
+
 }
 
 

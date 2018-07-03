@@ -1,11 +1,18 @@
-package litewolf101.wuffysmagicmayhem.biomes;
+package litewolf101.wuffysmagicmayhem.world.biomes;
 
 import litewolf101.wuffysmagicmayhem.Reference;
+import litewolf101.wuffysmagicmayhem.blocks.BlockDevourer;
+import litewolf101.wuffysmagicmayhem.init.ModBlocks;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.block.BlockTallGrass;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ChunkProviderClient;
+import net.minecraft.client.renderer.texture.ITickable;
 import net.minecraft.entity.monster.*;
+import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntitySheep;
@@ -14,37 +21,53 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeCache;
 import net.minecraft.world.chunk.ChunkPrimer;
+import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.NoiseGeneratorPerlin;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by LiteWolf101 on 6/16/2018.
  */
-public class BiomeSmoldered extends Biome {
-    private static BiomeProperties properties = new BiomeProperties("Smoldered Lands");
-    public BiomeSmoldered() {
+public class BiomeDarkened extends Biome {
+    private static BiomeProperties properties = new BiomeProperties("Darkened Forest");
+    protected static final NoiseGeneratorPerlin DARK_COLOR_NOISE = new NoiseGeneratorPerlin(new Random(1176L), 1);
+    public BiomeDarkened() {
         super(properties);
-        this.setRegistryName(new ResourceLocation(Reference.MODID, "biome_smoldered"));
+        this.setRegistryName(new ResourceLocation(Reference.MODID, "biome_darkened"));
         decorator.treesPerChunk = 0;
-        decorator.flowersPerChunk = 0;
-        properties.setTemperature(2.0F);
+        decorator.flowersPerChunk = 1;
+        properties.setTemperature(0.5F);
         properties.setHeightVariation(0.0F);
-        properties.setRainDisabled();
-
-
+        decorator.sandPatchesPerChunk = 0;
+        decorator.grassPerChunk = 10;
 
         spawnableMonsterList.clear();
-        spawnableMonsterList.add(new SpawnListEntry(EntityMagmaCube.class, 8, 1, 1));
-        spawnableMonsterList.add(new SpawnListEntry(EntityBlaze.class, 7, 1, 2));
-        spawnableMonsterList.add(new SpawnListEntry(EntityHusk.class, 8, 2, 5));
-        spawnableMonsterList.add(new SpawnListEntry(EntityWitherSkeleton.class, 6, 2, 5));
+        spawnableMonsterList.add(new SpawnListEntry(EntityZombie.class, 7, 1, 3));
+        spawnableMonsterList.add(new SpawnListEntry(EntityCreeper.class, 4, 2, 3));
+        spawnableMonsterList.add(new SpawnListEntry(EntitySkeleton.class, 10, 1, 4));
+        spawnableMonsterList.add(new SpawnListEntry(EntityEnderman.class, 1, 1, 1));
+        spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 2, 1, 2));
+        spawnableMonsterList.add(new SpawnListEntry(EntityWitch.class, 5, 1, 3));
+        spawnableMonsterList.add(new SpawnListEntry(EntityMagmaCube.class, 4, 1, 1));
+        //Add Darkened Knight
 
         spawnableCreatureList.clear();
+        spawnableCreatureList.add(new SpawnListEntry(EntityPig.class, 3, 2, 5));
+        spawnableCreatureList.add(new SpawnListEntry(EntitySheep.class, 5, 1, 4));
+        spawnableCreatureList.add(new SpawnListEntry(EntityCow.class, 6, 3, 8));
+        spawnableCreatureList.remove(new SpawnListEntry(EntityChicken.class, 1, 100, 100));
+        //timer();
     }
 
     @Override
@@ -54,28 +77,58 @@ public class BiomeSmoldered extends Biome {
 
     @Override
     public WorldGenerator getRandomWorldGenForGrass(Random par1Random) {
+
         if (par1Random.nextInt(2) == 0) {
-            return new WorldGenTallGrass(BlockTallGrass.EnumType.DEAD_BUSH);
+            return new WorldGenTallGrass(BlockTallGrass.EnumType.FERN);
         } else {
             return new WorldGenTallGrass(BlockTallGrass.EnumType.GRASS);
         }
     }
 
+
+
+    /**public static double xPos;
+
+    public static void timer() {
+        final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+        executorService.scheduleAtFixedRate(BiomeDarkened::myTask, 0, 1, TimeUnit.SECONDS);
+        if (Minecraft.getMinecraft().isGamePaused()){
+            executorService.shutdown();
+        }
+    }
+
+    public static void myTask() {
+
+        double newX = (double) 0;
+        try {
+            for (xPos = 1; xPos <= 20; xPos++) {
+                double piConstant = ((double)xPos / 20.0) * 3.14d;
+                double y = 0.25 * Math.sin(piConstant / 0.5) + 0.5;
+                newX = y;
+                Thread.sleep(50);
+            }
+        } catch (InterruptedException e) {}
+        xPos = newX;
+    }
+     The methods above animates the top layer of grass dynamically. However, this was removed to massive fps tanking.*/
+
     @Override
     @SideOnly(Side.CLIENT)
     public int getGrassColorAtPos(BlockPos pos) {
-        return 12105912;
+
+        double d0 = DARK_COLOR_NOISE.getValue((double)pos.getX() * 0.0755D/**xPos*/, (double)pos.getZ() * 0.0755D);
+        return d0 < -0.1D ? 2688093 : 2031677;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public int getFoliageColorAtPos(BlockPos pos) {
-        return 12105912;
+        return 6291645;
     }
 
     @Override
     public int getWaterColorMultiplier() {
-        return 16718362;
+        return 1;
     }
 
     @Override
@@ -85,14 +138,15 @@ public class BiomeSmoldered extends Biome {
 
     @Override
     public void genTerrainBlocks(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int x, int z, double noiseVal) {
-        this.generateBiomeSmolderedTerrain(worldIn, rand, chunkPrimerIn, x, z, noiseVal);
+        this.generateBiomeDarkenedTerrain(worldIn, rand, chunkPrimerIn, x, z, noiseVal);
     }
 
-    protected void generateBiomeSmolderedTerrain(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int x, int z, double noiseVal)
+    protected void generateBiomeDarkenedTerrain(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int x, int z, double noiseVal)
     {
+
         int i = worldIn.getSeaLevel();
-        IBlockState iblockstate = this.topBlock;
-        IBlockState iblockstate1 = this.fillerBlock;
+        IBlockState iblockstate = ModBlocks.darkInfusedGrass.getDefaultState();
+        IBlockState iblockstate1 = ModBlocks.darkInfusedDirt.getDefaultState();
         int j = -1;
         int k = (int)(noiseVal / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
         int l = x & 15;
@@ -124,8 +178,8 @@ public class BiomeSmoldered extends Biome {
                         }
                         else if (j1 >= i - 4 && j1 <= i + 1)
                         {
-                            iblockstate = this.topBlock;
-                            iblockstate1 = this.fillerBlock;
+                            iblockstate = ModBlocks.darkInfusedGrass.getDefaultState();
+                            iblockstate1 = ModBlocks.darkInfusedDirt.getDefaultState();
                         }
 
                         if (j1 < i && (iblockstate == null || iblockstate.getMaterial() == Material.AIR))

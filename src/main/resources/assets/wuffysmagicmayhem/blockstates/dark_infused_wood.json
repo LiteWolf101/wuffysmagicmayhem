@@ -1,8 +1,0 @@
-{
-  "variants": {
-    "axis=y":    { "model": "wuffysmagicmayhem:dark_infused_wood" },
-    "axis=z":     { "model": "wuffysmagicmayhem:dark_infused_wood", "x": 90 },
-    "axis=x":     { "model": "wuffysmagicmayhem:dark_infused_wood", "x": 90, "y": 90 },
-    "axis=none":   { "model": "wuffysmagicmayhem:dark_infused_wood_all" }
-  }
-}

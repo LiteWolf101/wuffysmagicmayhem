@@ -1,4 +1,4 @@
-package litewolf101.wuffysmagicmayhem.biomes;
+package litewolf101.wuffysmagicmayhem.world.biomes;
 
 import litewolf101.wuffysmagicmayhem.Reference;
 import net.minecraft.block.BlockSand;
@@ -6,7 +6,6 @@ import net.minecraft.block.BlockTallGrass;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.monster.*;
-import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntitySheep;
@@ -15,11 +14,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.chunk.ChunkPrimer;
-import net.minecraft.world.gen.NoiseGeneratorPerlin;
-import net.minecraft.world.gen.feature.WorldGenAbstractTree;
-import net.minecraft.world.gen.feature.WorldGenBigTree;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.relauncher.Side;
@@ -30,39 +25,31 @@ import java.util.Random;
 /**
  * Created by LiteWolf101 on 6/16/2018.
  */
-public class BiomeDarkened extends Biome {
-    private static BiomeProperties properties = new BiomeProperties("Darkened Forest");
-    protected static final NoiseGeneratorPerlin DARK_COLOR_NOISE = new NoiseGeneratorPerlin(new Random(1176L), 1);
-    public BiomeDarkened() {
+public class BiomeEnchanted extends Biome {
+    private static BiomeProperties properties = new BiomeProperties("Enchanted Woods");
+    public BiomeEnchanted() {
         super(properties);
-        this.setRegistryName(new ResourceLocation(Reference.MODID, "biome_darkened"));
-        decorator.treesPerChunk = 0;
+        this.setRegistryName(new ResourceLocation(Reference.MODID, "biome_enchanted"));
+        decorator.treesPerChunk = 1;
         decorator.flowersPerChunk = 1;
-        properties.setTemperature(0.5F);
+        properties.setTemperature(1.2F);
         properties.setHeightVariation(0.0F);
-        decorator.sandPatchesPerChunk = 0;
-        decorator.grassPerChunk = 10;
 
         spawnableMonsterList.clear();
-        spawnableMonsterList.add(new SpawnListEntry(EntityZombie.class, 7, 1, 3));
-        spawnableMonsterList.add(new SpawnListEntry(EntityCreeper.class, 4, 2, 3));
-        spawnableMonsterList.add(new SpawnListEntry(EntitySkeleton.class, 10, 1, 4));
-        spawnableMonsterList.add(new SpawnListEntry(EntityEnderman.class, 1, 1, 1));
-        spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 2, 1, 2));
-        spawnableMonsterList.add(new SpawnListEntry(EntityWitch.class, 5, 1, 3));
-        spawnableMonsterList.add(new SpawnListEntry(EntityMagmaCube.class, 4, 1, 1));
-        //Add Darkened Knight
+        spawnableMonsterList.add(new SpawnListEntry(EntityEnderman.class, 100, 1, 1));
+        spawnableMonsterList.add(new SpawnListEntry(EntityWitch.class, 30, 2, 4));
+        spawnableMonsterList.add(new SpawnListEntry(EntityVindicator.class, 100, 1, 1));
+
 
         spawnableCreatureList.clear();
         spawnableCreatureList.add(new SpawnListEntry(EntityPig.class, 3, 2, 5));
         spawnableCreatureList.add(new SpawnListEntry(EntitySheep.class, 5, 1, 4));
         spawnableCreatureList.add(new SpawnListEntry(EntityCow.class, 6, 3, 8));
-        spawnableCreatureList.remove(new SpawnListEntry(EntityChicken.class, 1, 100, 100));
     }
 
     @Override
     public float getSpawningChance() {
-        return 0.17F;
+        return 0.14F;
     }
 
     @Override
@@ -77,34 +64,31 @@ public class BiomeDarkened extends Biome {
     @Override
     @SideOnly(Side.CLIENT)
     public int getGrassColorAtPos(BlockPos pos) {
-        double d0 = DARK_COLOR_NOISE.getValue((double)pos.getX() * 0.0755D, (double)pos.getZ() * 0.0755D);
-        return d0 < -0.1D ? 2688093 : 2031677;
+        return 2424756;
     }
-
-    //TODO Generate Custom flower decor with @BlockShimmeringGrass
 
     @Override
     @SideOnly(Side.CLIENT)
     public int getFoliageColorAtPos(BlockPos pos) {
-        return 6291645;
+        return getGrassColorAtPos(pos);
     }
 
     @Override
     public int getWaterColorMultiplier() {
-        return 1;
+        return 1244664;
     }
 
     @Override
     public int getSkyColorByTemp(float currentTemperature) {
-        return 100;
+        return 24655;
     }
 
     @Override
     public void genTerrainBlocks(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int x, int z, double noiseVal) {
-        this.generateBiomeDarkenedTerrain(worldIn, rand, chunkPrimerIn, x, z, noiseVal);
+        this.generateBiomeEnchantedTerrain(worldIn, rand, chunkPrimerIn, x, z, noiseVal);
     }
 
-    protected void generateBiomeDarkenedTerrain(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int x, int z, double noiseVal)
+    protected void generateBiomeEnchantedTerrain(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int x, int z, double noiseVal)
     {
         int i = worldIn.getSeaLevel();
         IBlockState iblockstate = this.topBlock;

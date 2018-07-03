@@ -3,6 +3,7 @@ package litewolf101.wuffysmagicmayhem.init;
 import litewolf101.wuffysmagicmayhem.Reference;
 import litewolf101.wuffysmagicmayhem.WuffysMagicMayhem;
 import litewolf101.wuffysmagicmayhem.blocks.*;
+import litewolf101.wuffysmagicmayhem.blocks.enums.WMMWoodType;
 import litewolf101.wuffysmagicmayhem.handlers.EnumHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -23,10 +24,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Mod.EventBusSubscriber(modid = Reference.MODID)
 public class ModBlocks {
 
-	public static Block darkInfusedWood;
-	public static Block starlightWood;
-	public static Block enchantedWood;
-	public static Block ashenedWood;
+	//public static Block wmmWood;
 	public static Block darkInfusedPlanks;
 	public static Block starlightPlanks;
 	public static Block enchantedPlanks;
@@ -43,19 +41,25 @@ public class ModBlocks {
 	public static Block magicGearbox;
 	public static Block devourer;
 	public static Block shimmeringGrass;
+	public static WMMWood starlightWood;
+	public static WMMWood darkenedWood;
+	public static WMMWood ashenedWood;
+	public static WMMWood enchantedWood;
+	public static Block darkInfusedGrass;
+	public static Block darkInfusedDirt;
 
 	public static void init() {
-		darkInfusedWood = new DarkInfusedWood("dark_infused_wood", Material.WOOD).setHardness(1.0f).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB).setLightLevel(0.2f);
-		darkInfusedWood.setHarvestLevel("axe", 0);
 
-		starlightWood = new StarlightWood("starlight_wood", Material.WOOD).setHardness(1.0f).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB).setLightLevel(0.2f);
-		starlightWood.setHarvestLevel("axe", 0);
+		//wmmWood = new WMMWood("wmm_wood").setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
+		//wmmWood.setHarvestLevel("axe", 0);
 
-		enchantedWood = new EnchantedWood("enchanted_wood", Material.WOOD).setHardness(1.0f).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
-		enchantedWood.setHarvestLevel("axe", 0);
+		//woods
 
-		ashenedWood = new AshenedWood("ashened_wood", Material.WOOD).setHardness(1.0f).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB).setLightLevel(0f);
-		ashenedWood.setHarvestLevel("axe", 0);
+		starlightWood = new WMMWood("starlight_wood");
+		darkenedWood = new WMMWood("darkened_wood");
+		ashenedWood = new WMMWood("ashened_wood");
+		enchantedWood = new WMMWood("enchanted_wood");
+
 
 		darkInfusedPlanks = new DarkInfusedPlanks("dark_infused_planks", Material.WOOD).setHardness(1.0f).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB).setLightLevel(0f);
 		darkInfusedPlanks.setHarvestLevel("axe", 0);
@@ -93,14 +97,19 @@ public class ModBlocks {
 
 		shimmeringGrass = new BlockShimmeringGrass("shimmering_grass", Material.GRASS).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
 
+		darkInfusedGrass = new BlockDarkInfusedGrass("dark_infused_grass", Material.GRASS).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
+
+		darkInfusedDirt = new BlockDarkInfusedDirt("dark_infused_dirt", Material.GROUND).setCreativeTab(WuffysMagicMayhem.CREATIVE_TAB);
+
 	}
 
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> event) {
-		event.getRegistry().register(darkInfusedWood);
+		//event.getRegistry().register(wmmWood);
 		event.getRegistry().register(starlightWood);
-		event.getRegistry().register(enchantedWood);
+		event.getRegistry().register(darkenedWood);
 		event.getRegistry().register(ashenedWood);
+		event.getRegistry().register(enchantedWood);
 		event.getRegistry().register(darkInfusedPlanks);
 		event.getRegistry().register(starlightPlanks);
 		event.getRegistry().register(enchantedPlanks);
@@ -117,14 +126,14 @@ public class ModBlocks {
 		event.getRegistry().register(magicGearbox);
 		event.getRegistry().register(devourer);
 		event.getRegistry().register(shimmeringGrass);
+		event.getRegistry().register(darkInfusedGrass);
+		event.getRegistry().register(darkInfusedDirt);
 	}
 
 	@SubscribeEvent
 	public static void registerItemBlocks(RegistryEvent.Register<Item> event) {
-		event.getRegistry().register(new ItemBlock(darkInfusedWood).setRegistryName(darkInfusedWood.getRegistryName()));
-		event.getRegistry().register(new ItemBlock(starlightWood).setRegistryName(starlightWood.getRegistryName()));
-		event.getRegistry().register(new ItemBlock(enchantedWood).setRegistryName(enchantedWood.getRegistryName()));
-		event.getRegistry().register(new ItemBlock(ashenedWood).setRegistryName(ashenedWood.getRegistryName()));
+		//event.getRegistry().register(new ItemBlock(wmmWood).setRegistryName(wmmWood.getRegistryName()));
+		//event.getRegistry().register(new ItemBlock().setRegistryName(starlightWood.getRegistryName()));
 		event.getRegistry().register(new ItemBlock(darkInfusedPlanks).setRegistryName(darkInfusedPlanks.getRegistryName()));
 		event.getRegistry().register(new ItemBlock(starlightPlanks).setRegistryName(starlightPlanks.getRegistryName()));
 		event.getRegistry().register(new ItemBlock(enchantedPlanks).setRegistryName(enchantedPlanks.getRegistryName()));
@@ -141,14 +150,16 @@ public class ModBlocks {
 		event.getRegistry().register(new ItemBlock(magicGearbox).setRegistryName(magicGearbox.getRegistryName()));
 		event.getRegistry().register(new ItemBlock(devourer).setRegistryName(devourer.getRegistryName()));
 		event.getRegistry().register(new ItemBlock(shimmeringGrass).setRegistryName(shimmeringGrass.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(darkInfusedGrass).setRegistryName(darkInfusedGrass.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(darkInfusedDirt).setRegistryName(darkInfusedDirt.getRegistryName()));
 	}
 
 	@SubscribeEvent
 	public static void registerRenders(ModelRegistryEvent event) {
-		registerRender(Item.getItemFromBlock(darkInfusedWood));
 		registerRender(Item.getItemFromBlock(starlightWood));
-		registerRender(Item.getItemFromBlock(enchantedWood));
+		registerRender(Item.getItemFromBlock(darkenedWood));
 		registerRender(Item.getItemFromBlock(ashenedWood));
+		registerRender(Item.getItemFromBlock(enchantedWood));
 		registerRender(Item.getItemFromBlock(darkInfusedPlanks));
 		registerRender(Item.getItemFromBlock(starlightPlanks));
 		registerRender(Item.getItemFromBlock(enchantedPlanks));
@@ -167,6 +178,8 @@ public class ModBlocks {
 		registerRender(Item.getItemFromBlock(magicGearbox));
 		registerRender(Item.getItemFromBlock(devourer));
 		registerRender(Item.getItemFromBlock(shimmeringGrass));
+		registerRender(Item.getItemFromBlock(darkInfusedGrass));
+		registerRender(Item.getItemFromBlock(darkInfusedDirt));
 	}
 
 	public static void registerRender(Item item) {

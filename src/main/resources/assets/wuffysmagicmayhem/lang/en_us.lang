@@ -33,7 +33,12 @@ tile.totem_top.name=Totem Top
 tile.totem_upgrade_base.name=Totem Upgrade Base
 tile.magic_gearbox.name=Magic Gearbox
 tile.devourer.name=§4§lThe Devourer
-tile.shimmering_grass.nameShimmering Grass
+tile.shimmering_grass.name=Shimmering Grass
+tile.dark_infused_grass.name=Dark Infused Grass
+tile.dark_infused_dirt.name=Dark Infused Dirt
+
+#Entities
+entity.floating_star.name=Floating Star
 
 #Creative Tab
 itemGroup.wuffysmagicmayhem=§9Wuffy's Magic Mayhem

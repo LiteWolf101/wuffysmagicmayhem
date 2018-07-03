@@ -1,0 +1,7 @@
+﻿{
+	"parent": "block/cube_column",
+	"textures": {
+		"end": "wuffysmagicmayhem:blocks/darkened_wood_top",
+		"side": "wuffysmagicmayhem:blocks/darkened_wood_side"
+	}
+}

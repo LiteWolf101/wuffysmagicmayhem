@@ -1,19 +1,20 @@
-package litewolf101.wuffysmagicmayhem.biomes;
+package litewolf101.wuffysmagicmayhem.world.biomes;
 
 import litewolf101.wuffysmagicmayhem.Reference;
+import litewolf101.wuffysmagicmayhem.init.ModBlocks;
+import litewolf101.wuffysmagicmayhem.mobs.MobFloatingStar;
+import litewolf101.wuffysmagicmayhem.world.WMMGrassWorldGen;
 import net.minecraft.block.BlockSand;
 import net.minecraft.block.BlockTallGrass;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.monster.*;
-import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.ChunkPrimer;
@@ -51,7 +52,7 @@ public class BiomeStarlight extends Biome {
         spawnableCreatureList.add(new SpawnListEntry(EntityPig.class, 3, 2, 5));
         spawnableCreatureList.add(new SpawnListEntry(EntitySheep.class, 5, 1, 4));
         spawnableCreatureList.add(new SpawnListEntry(EntityCow.class, 6, 3, 8));
-        //Add Floating Star
+        spawnableCreatureList.add(new SpawnListEntry(MobFloatingStar.class, 20, 1, 1));
     }
 
     @Override
@@ -102,6 +103,20 @@ public class BiomeStarlight extends Biome {
     @Override
     public void genTerrainBlocks(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int x, int z, double noiseVal) {
         this.generateBiomeStarlightTerrain(worldIn, rand, chunkPrimerIn, x, z, noiseVal);
+    }
+
+    @Override
+    public void decorate(World worldIn, Random rand, BlockPos pos) {
+        super.decorate(worldIn, rand, pos);
+        WMMGrassWorldGen grass = new WMMGrassWorldGen(ModBlocks.shimmeringGrass.getDefaultState(), 1);
+        BlockPos.MutableBlockPos mutPos = new BlockPos.MutableBlockPos(0, 0, 0);
+        for (int i = 0; i < 20; i++) {
+            int rx = pos.getX() + rand.nextInt(8) + 4;
+            int ry = worldIn.getSeaLevel();
+            int rz = pos.getZ() + rand.nextInt(8) + 4;
+            mutPos.setPos(rx, ry, rz);
+            grass.generate(worldIn, rand, mutPos);
+        }
     }
 
     protected void generateBiomeStarlightTerrain(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int x, int z, double noiseVal)

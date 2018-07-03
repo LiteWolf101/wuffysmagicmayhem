@@ -1,4 +1,4 @@
-package litewolf101.wuffysmagicmayhem.biomes;
+package litewolf101.wuffysmagicmayhem.world.biomes;
 
 import litewolf101.wuffysmagicmayhem.Reference;
 import net.minecraft.block.BlockSand;
@@ -6,17 +6,12 @@ import net.minecraft.block.BlockTallGrass;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.monster.*;
-import net.minecraft.entity.passive.EntityCow;
-import net.minecraft.entity.passive.EntityPig;
-import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.ChunkPrimer;
-import net.minecraft.world.gen.feature.WorldGenAbstractTree;
-import net.minecraft.world.gen.feature.WorldGenBigTree;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.relauncher.Side;
@@ -27,37 +22,37 @@ import java.util.Random;
 /**
  * Created by LiteWolf101 on 6/16/2018.
  */
-public class BiomeEnchanted extends Biome {
-    private static BiomeProperties properties = new BiomeProperties("Enchanted Woods");
-    public BiomeEnchanted() {
+public class BiomeSmoldered extends Biome {
+    private static BiomeProperties properties = new BiomeProperties("Smoldered Lands");
+    public BiomeSmoldered() {
         super(properties);
-        this.setRegistryName(new ResourceLocation(Reference.MODID, "biome_enchanted"));
-        decorator.treesPerChunk = 1;
-        decorator.flowersPerChunk = 1;
-        properties.setTemperature(1.2F);
+        this.setRegistryName(new ResourceLocation(Reference.MODID, "biome_smoldered"));
+        decorator.treesPerChunk = 0;
+        decorator.flowersPerChunk = 0;
+        properties.setTemperature(2.0F);
         properties.setHeightVariation(0.0F);
+        properties.setRainDisabled();
+
+
 
         spawnableMonsterList.clear();
-        spawnableMonsterList.add(new SpawnListEntry(EntityEnderman.class, 100, 1, 1));
-        spawnableMonsterList.add(new SpawnListEntry(EntityWitch.class, 30, 2, 4));
-        spawnableMonsterList.add(new SpawnListEntry(EntityVindicator.class, 100, 1, 1));
-
+        spawnableMonsterList.add(new SpawnListEntry(EntityMagmaCube.class, 8, 1, 1));
+        spawnableMonsterList.add(new SpawnListEntry(EntityBlaze.class, 7, 1, 2));
+        spawnableMonsterList.add(new SpawnListEntry(EntityHusk.class, 8, 2, 5));
+        spawnableMonsterList.add(new SpawnListEntry(EntityWitherSkeleton.class, 6, 2, 5));
 
         spawnableCreatureList.clear();
-        spawnableCreatureList.add(new SpawnListEntry(EntityPig.class, 3, 2, 5));
-        spawnableCreatureList.add(new SpawnListEntry(EntitySheep.class, 5, 1, 4));
-        spawnableCreatureList.add(new SpawnListEntry(EntityCow.class, 6, 3, 8));
     }
 
     @Override
     public float getSpawningChance() {
-        return 0.14F;
+        return 0.17F;
     }
 
     @Override
     public WorldGenerator getRandomWorldGenForGrass(Random par1Random) {
         if (par1Random.nextInt(2) == 0) {
-            return new WorldGenTallGrass(BlockTallGrass.EnumType.FERN);
+            return new WorldGenTallGrass(BlockTallGrass.EnumType.DEAD_BUSH);
         } else {
             return new WorldGenTallGrass(BlockTallGrass.EnumType.GRASS);
         }
@@ -66,31 +61,31 @@ public class BiomeEnchanted extends Biome {
     @Override
     @SideOnly(Side.CLIENT)
     public int getGrassColorAtPos(BlockPos pos) {
-        return 2424756;
+        return 12105912;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public int getFoliageColorAtPos(BlockPos pos) {
-        return getGrassColorAtPos(pos);
+        return 12105912;
     }
 
     @Override
     public int getWaterColorMultiplier() {
-        return 1244664;
+        return 16718362;
     }
 
     @Override
     public int getSkyColorByTemp(float currentTemperature) {
-        return 24655;
+        return 100;
     }
 
     @Override
     public void genTerrainBlocks(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int x, int z, double noiseVal) {
-        this.generateBiomeEnchantedTerrain(worldIn, rand, chunkPrimerIn, x, z, noiseVal);
+        this.generateBiomeSmolderedTerrain(worldIn, rand, chunkPrimerIn, x, z, noiseVal);
     }
 
-    protected void generateBiomeEnchantedTerrain(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int x, int z, double noiseVal)
+    protected void generateBiomeSmolderedTerrain(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int x, int z, double noiseVal)
     {
         int i = worldIn.getSeaLevel();
         IBlockState iblockstate = this.topBlock;

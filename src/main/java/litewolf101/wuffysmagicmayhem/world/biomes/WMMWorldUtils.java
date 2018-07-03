@@ -1,4 +1,4 @@
-package litewolf101.wuffysmagicmayhem.biomes;
+package litewolf101.wuffysmagicmayhem.world.biomes;
 
 import litewolf101.wuffysmagicmayhem.Reference;
 import net.minecraft.world.biome.Biome;
