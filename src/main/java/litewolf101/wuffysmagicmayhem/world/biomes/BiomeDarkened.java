@@ -1,16 +1,13 @@
 package litewolf101.wuffysmagicmayhem.world.biomes;
 
-import litewolf101.wuffysmagicmayhem.Reference;
-import litewolf101.wuffysmagicmayhem.blocks.BlockDevourer;
-import litewolf101.wuffysmagicmayhem.init.ModBlocks;
-import net.minecraft.block.Block;
+import litewolf101.wuffysmagicmayhem.init.BlocksInit;
+import litewolf101.wuffysmagicmayhem.utils.Reference;
+import litewolf101.wuffysmagicmayhem.utils.handlers.EnumWoodHandler;
+import litewolf101.wuffysmagicmayhem.world.worldgen.trees.WorldGenDarkenedTree;
 import net.minecraft.block.BlockSand;
 import net.minecraft.block.BlockTallGrass;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ChunkProviderClient;
-import net.minecraft.client.renderer.texture.ITickable;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
@@ -21,20 +18,18 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeCache;
 import net.minecraft.world.chunk.ChunkPrimer;
-import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.NoiseGeneratorPerlin;
+import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+
+import static litewolf101.wuffysmagicmayhem.objects.blocks.BlockLogs.VARIANT;
+
 
 /**
  * Created by LiteWolf101 on 6/16/2018.
@@ -45,7 +40,7 @@ public class BiomeDarkened extends Biome {
     public BiomeDarkened() {
         super(properties);
         this.setRegistryName(new ResourceLocation(Reference.MODID, "biome_darkened"));
-        decorator.treesPerChunk = 0;
+        decorator.treesPerChunk = 4;
         decorator.flowersPerChunk = 1;
         properties.setTemperature(0.5F);
         properties.setHeightVariation(0.0F);
@@ -82,6 +77,15 @@ public class BiomeDarkened extends Biome {
             return new WorldGenTallGrass(BlockTallGrass.EnumType.FERN);
         } else {
             return new WorldGenTallGrass(BlockTallGrass.EnumType.GRASS);
+        }
+    }
+
+    @Override
+    public WorldGenAbstractTree getRandomTreeFeature(Random random) {
+        if (random.nextInt(5) == 0) {
+            return BIG_TREE_FEATURE;
+        } else {
+            return new WorldGenDarkenedTree(true);
         }
     }
 
@@ -145,8 +149,8 @@ public class BiomeDarkened extends Biome {
     {
 
         int i = worldIn.getSeaLevel();
-        IBlockState iblockstate = ModBlocks.darkInfusedGrass.getDefaultState();
-        IBlockState iblockstate1 = ModBlocks.darkInfusedDirt.getDefaultState();
+        IBlockState iblockstate = BlocksInit.GRASS.getDefaultState().withProperty(VARIANT, EnumWoodHandler.EnumType.DARKENED);
+        IBlockState iblockstate1 = BlocksInit.DIRT.getDefaultState().withProperty(VARIANT, EnumWoodHandler.EnumType.DARKENED);
         int j = -1;
         int k = (int)(noiseVal / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
         int l = x & 15;
@@ -178,8 +182,8 @@ public class BiomeDarkened extends Biome {
                         }
                         else if (j1 >= i - 4 && j1 <= i + 1)
                         {
-                            iblockstate = ModBlocks.darkInfusedGrass.getDefaultState();
-                            iblockstate1 = ModBlocks.darkInfusedDirt.getDefaultState();
+                            iblockstate = BlocksInit.GRASS.getDefaultState().withProperty(VARIANT, EnumWoodHandler.EnumType.DARKENED);
+                            iblockstate1 = BlocksInit.DIRT.getDefaultState().withProperty(VARIANT, EnumWoodHandler.EnumType.DARKENED);
                         }
 
                         if (j1 < i && (iblockstate == null || iblockstate.getMaterial() == Material.AIR))

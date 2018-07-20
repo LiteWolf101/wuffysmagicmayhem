@@ -3,18 +3,12 @@ The following text document is only for notes because I forget things easily.
 //TODO Read @notes.txt
 
 #Fix
-//Fix Bubbleshrooms
-//Fix Glowflowers
-Fix Strange Grass model
+Fix Glowflowers
 Fix code to make more efficient
 Fix Magic Gearbox
 Fix Biome Lag
-Fix Wood
 
 #Add
-Add rotation state properties to Magic Gearbox
-Add Mobs
-Add Boss
 Add pictures to special book
 Add recipes
 Add achievements
@@ -22,14 +16,12 @@ Add achievements
 Add more custom particles
 Add matrix line draw to mob in BlockTotemTop TE
 Add possible structures?
-Add sapling function
 -Add structure command
 
 #Remove
-Remove recipe for Special Book. It's supposed to be a rare mob drop(dropped from mod boss) or loot(1/2048)
+Remove recipe for Special Book. It's supposed to be a rare mob drop (1/2048)
 Remove unnecessary code. Make code efficient so fps doesn't tank
 Remove sleep
 Remove Herobrine
 
-// = Alex is workign on it?
 - = Maybe. I dunno if i want to add this feature.

@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "axis=x,variant=starlight": {"model": "wuffysmagicmayhem:log_starlight", "x": 90, "y": 90},
+    "axis=x,variant=darkened": {"model": "wuffysmagicmayhem:log_darkened", "x": 90, "y": 90},
+    "axis=x,variant=enchanted": {"model": "wuffysmagicmayhem:log_enchanted", "x": 90, "y": 90},
+    "axis=x,variant=ashened": {"model": "wuffysmagicmayhem:log_ashened", "x": 90, "y": 90},
+    "axis=y,variant=starlight": {"model": "wuffysmagicmayhem:log_starlight"},
+    "axis=y,variant=darkened": {"model": "wuffysmagicmayhem:log_darkened"},
+    "axis=y,variant=enchanted": {"model": "wuffysmagicmayhem:log_enchanted"},
+    "axis=y,variant=ashened": {"model": "wuffysmagicmayhem:log_ashened"},
+    "axis=z,variant=starlight": {"model": "wuffysmagicmayhem:log_starlight", "x": 90},
+    "axis=z,variant=darkened": {"model": "wuffysmagicmayhem:log_darkened", "x": 90},
+    "axis=z,variant=enchanted": {"model": "wuffysmagicmayhem:log_enchanted", "x": 90},
+    "axis=z,variant=ashened": {"model": "wuffysmagicmayhem:log_ashened", "x": 90},
+    "axis=none,variant=starlight": {"model": "wuffysmagicmayhem:log_starlight_all"},
+    "axis=none,variant=darkened": {"model": "wuffysmagicmayhem:log_darkened_all"},
+    "axis=none,variant=enchanted": {"model": "wuffysmagicmayhem:log_enchanted_all"},
+    "axis=none,variant=ashened": {"model": "wuffysmagicmayhem:log_ashened_all"}
+  }
+}

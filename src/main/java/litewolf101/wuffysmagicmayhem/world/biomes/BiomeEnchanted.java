@@ -1,11 +1,15 @@
 package litewolf101.wuffysmagicmayhem.world.biomes;
 
-import litewolf101.wuffysmagicmayhem.Reference;
-import net.minecraft.block.BlockSand;
-import net.minecraft.block.BlockTallGrass;
+import litewolf101.wuffysmagicmayhem.init.BlocksInit;
+import litewolf101.wuffysmagicmayhem.utils.Reference;
+import litewolf101.wuffysmagicmayhem.utils.handlers.EnumWoodHandler;
+import litewolf101.wuffysmagicmayhem.world.worldgen.trees.WorldGenEnchantedTree;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.monster.*;
+import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.monster.EntityVindicator;
+import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntitySheep;
@@ -15,6 +19,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.ChunkPrimer;
+import net.minecraft.world.gen.feature.WorldGenAbstractTree;
+import net.minecraft.world.gen.feature.WorldGenMegaJungle;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.relauncher.Side;
@@ -22,10 +28,15 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
+import static litewolf101.wuffysmagicmayhem.objects.blocks.BlockLogs.VARIANT;
+
+
 /**
  * Created by LiteWolf101 on 6/16/2018.
  */
 public class BiomeEnchanted extends Biome {
+    private static final IBlockState JUNGLE_LOG = Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.JUNGLE);
+    private static final IBlockState JUNGLE_LEAF = Blocks.LEAVES.getDefaultState().withProperty(BlockOldLeaf.VARIANT, BlockPlanks.EnumType.JUNGLE).withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false));
     private static BiomeProperties properties = new BiomeProperties("Enchanted Woods");
     public BiomeEnchanted() {
         super(properties);
@@ -45,6 +56,15 @@ public class BiomeEnchanted extends Biome {
         spawnableCreatureList.add(new SpawnListEntry(EntityPig.class, 3, 2, 5));
         spawnableCreatureList.add(new SpawnListEntry(EntitySheep.class, 5, 1, 4));
         spawnableCreatureList.add(new SpawnListEntry(EntityCow.class, 6, 3, 8));
+    }
+
+    @Override
+    public WorldGenAbstractTree getRandomTreeFeature(Random random) {
+        if (random.nextInt(5) == 0) {
+            return new WorldGenMegaJungle(false, 12, 15, JUNGLE_LOG, JUNGLE_LEAF);
+        } else {
+            return new WorldGenEnchantedTree(true);
+        }
     }
 
     @Override
@@ -91,8 +111,8 @@ public class BiomeEnchanted extends Biome {
     protected void generateBiomeEnchantedTerrain(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int x, int z, double noiseVal)
     {
         int i = worldIn.getSeaLevel();
-        IBlockState iblockstate = this.topBlock;
-        IBlockState iblockstate1 = this.fillerBlock;
+        IBlockState iblockstate = BlocksInit.GRASS.getDefaultState().withProperty(VARIANT, EnumWoodHandler.EnumType.ENCHANTED);
+        IBlockState iblockstate1 = BlocksInit.DIRT.getDefaultState().withProperty(VARIANT, EnumWoodHandler.EnumType.ENCHANTED);
         int j = -1;
         int k = (int)(noiseVal / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
         int l = x & 15;
@@ -124,8 +144,8 @@ public class BiomeEnchanted extends Biome {
                         }
                         else if (j1 >= i - 4 && j1 <= i + 1)
                         {
-                            iblockstate = this.topBlock;
-                            iblockstate1 = this.fillerBlock;
+                            iblockstate = BlocksInit.GRASS.getDefaultState().withProperty(VARIANT, EnumWoodHandler.EnumType.ENCHANTED);
+                            iblockstate1 = BlocksInit.DIRT.getDefaultState().withProperty(VARIANT, EnumWoodHandler.EnumType.ENCHANTED);
                         }
 
                         if (j1 < i && (iblockstate == null || iblockstate.getMaterial() == Material.AIR))

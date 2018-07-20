@@ -14,31 +14,58 @@ item.wmm_book_special.name=§bSpecial Book
 item.wmm_book_index.name=§dMagic Mayhem Index Book
 item.record.wmm_record_1.desc=DJWufflez - Epic Wizards
 item.wmm_record_1.name=Magic Music Disc
+item.magical_inspector.name=§9Magical Inspector
 
 #Blocks
-tile.dark_infused_wood.name=§9Dark Infused Wood
-tile.dark_infused_leaves.name=§9Dark Infused Leaves
-tile.dark_infused_planks.name=§9Dark Infused Planks
+tile.log_darkened.name=§9Darkened Wood
+tile.log_starlight.name=§eStarlight Wood
+tile.log_enchanted.name=§bEnchanted Wood
+tile.log_ashened.name=§8Ashened Wood
+
+tile.plank_darkened.name=§9Darkened Planks
+tile.plank_starlight.name=§eStarlight Planks
+tile.plank_enchanted.name=§bEnchanted Planks
+tile.plank_ashened.name=§8Ashened Planks
+
+tile.dirt_darkened.name=§9Darkened Dirt
+tile.dirt_starlight.name=§eStarlight Dirt
+tile.dirt_enchanted.name=§bEnchanted Dirt
+tile.dirt_ashened.name=§8Ashened Dirt
+
+tile.grass_darkened.name=§9Darkened Grass
+tile.grass_starlight.name=§eStarlight Grass
+tile.grass_enchanted.name=§bEnchanted Grass
+tile.grass_ashened.name=§8Ashened Grass
+
+tile.leaves_darkened.name=§9Darkened Leaves
+tile.leaves_starlight.name=§eStarlight Leaves
+tile.leaves_enchanted.name=§bEnchanted Leaves
+tile.leaves_ashened.name=§8Ashened Leaves
+
+tile.strange_grass_no_bulb.name=Strange Grass
+tile.strange_grass_has_bulb.name=Strange Grass
+
+tile.bubbleshroom_blue.name=Blue Bubbleshroom
+tile.bubbleshroom_green.name=Green Bubbleshroom
+tile.bubbleshroom_pink.name=Pink Bubbleshroom
+tile.bubbleshroom_gray.name=Gray Bubbleshroom
+
+tile.sapling_starlight.name=Starlight Sapling
+tile.sapling_darkened.name=Darkened Sapling
+tile.sapling_enchanted.name=Enchanted Sapling
+tile.sapling_ashened.name=Ashened Sapling
+
+tile.magic_gearbox_down.name=Magic Gearbox
+tile.shimmering_grass.name=Shimmering Grass
+tile.devourer.name=§4§lThe Devourer
 tile.glow_flowers.name=Glow Flowers
-tile.starlight_wood.name=§eStarlight Wood
-tile.starlight_leaves.name=§eStarlight Leaves
-tile.starlight_planks.name=§eStarlight Planks
-tile.enchanted_wood.name=§bEnchanted Wood
-tile.enchanted_planks.name=§bEnchanted Planks
-tile.enchanted_leaves.name=§bEnchanted Leaves
-tile.ashened_wood.name=§8Ashened Wood
-tile.ashened_planks.name=§8Ashened Planks
-tile.ashened_leaves.name=§8Ashened Leaves
 tile.totem_top.name=Totem Top
 tile.totem_upgrade_base.name=Totem Upgrade Base
-tile.magic_gearbox.name=Magic Gearbox
-tile.devourer.name=§4§lThe Devourer
-tile.shimmering_grass.name=Shimmering Grass
-tile.dark_infused_grass.name=Dark Infused Grass
-tile.dark_infused_dirt.name=Dark Infused Dirt
 
 #Entities
 entity.floating_star.name=Floating Star
+entity.darkened_knight.name=Darkened Knight
+entity.darkened_summoner.name=Darkened Summoner
 
 #Creative Tab
 itemGroup.wuffysmagicmayhem=§9Wuffy's Magic Mayhem
@@ -48,3 +75,7 @@ container.totem_upgrade_base=Totem Upgrade Base
 
 #Sounds
 block.totem_top.totem_hit=Totem Hit
+
+#Advancements
+advancement.wuffysmagicmayhem=§eWuffy's Magic Mayhem
+advancement.wuffysmagicmayhem.desc=The beginning of mayhem...?

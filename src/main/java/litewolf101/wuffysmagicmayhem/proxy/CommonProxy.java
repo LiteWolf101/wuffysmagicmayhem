@@ -1,11 +1,11 @@
 package litewolf101.wuffysmagicmayhem.proxy;
 
 
-import litewolf101.wuffysmagicmayhem.Reference;
-import litewolf101.wuffysmagicmayhem.client.fx.WMMParticleType;
 import litewolf101.wuffysmagicmayhem.init.ModEntities;
 import litewolf101.wuffysmagicmayhem.tileentity.TileEntityBlockTotemUpgradeBase;
-import net.minecraft.client.particle.Particle;
+import litewolf101.wuffysmagicmayhem.utils.Reference;
+import litewolf101.wuffysmagicmayhem.utils.client.fx.WMMParticleType;
+import net.minecraft.item.Item;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -37,5 +37,12 @@ public class CommonProxy {
     }
 
     public void spawnParticle(World world, WMMParticleType particle, double x, double y, double z, double velX, double velY, double velZ) {
+    }
+
+    public void registerItemRenderer(Item item, int meta, String id)
+    {
+    }
+
+    public void registerVariantRenderer(Item item, int meta, String filename, String id) {
     }
 }

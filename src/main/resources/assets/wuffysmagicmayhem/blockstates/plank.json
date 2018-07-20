@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "variant=starlight": {"model": "wuffysmagicmayhem:planks_starlight"},
+    "variant=darkened": {"model": "wuffysmagicmayhem:planks_darkened"},
+    "variant=enchanted": {"model": "wuffysmagicmayhem:planks_enchanted"},
+    "variant=ashened": {"model": "wuffysmagicmayhem:planks_ashened"}
+  }
+}

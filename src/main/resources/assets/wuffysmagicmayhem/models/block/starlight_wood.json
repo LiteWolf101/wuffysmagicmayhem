@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_column",
-  "textures": {
-    "end": "wuffysmagicmayhem:blocks/starlight_wood_top",
-    "side": "wuffysmagicmayhem:blocks/starlight_wood"
-  }
-}

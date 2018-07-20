@@ -1,6 +1,6 @@
 package litewolf101.wuffysmagicmayhem.world.biomes;
 
-import litewolf101.wuffysmagicmayhem.Reference;
+import litewolf101.wuffysmagicmayhem.utils.Reference;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeProvider;
 import net.minecraftforge.common.BiomeDictionary;
@@ -16,8 +16,8 @@ import net.minecraftforge.registries.IForgeRegistry;
 @Mod.EventBusSubscriber(modid = Reference.MODID)
 public final class WMMWorldUtils {
     public static final BiomeStarlight biomeStarlight = new BiomeStarlight();
-    public static final BiomeEnchanted biomeEnchanted = new BiomeEnchanted();
     public static final BiomeDarkened biomeDarkened = new BiomeDarkened();
+    public static final BiomeEnchanted biomeEnchanted = new BiomeEnchanted();
     public static final BiomeSmoldered biomeSmoldered = new BiomeSmoldered();
 
     @SubscribeEvent
@@ -25,29 +25,29 @@ public final class WMMWorldUtils {
         IForgeRegistry<Biome> registry = event.getRegistry();
 
         registry.register(biomeStarlight);
-        registry.register(biomeEnchanted);
         registry.register(biomeDarkened);
+        registry.register(biomeEnchanted);
         registry.register(biomeSmoldered);
 
         BiomeDictionary.addTypes(biomeStarlight, BiomeDictionary.Type.FOREST);
-        BiomeDictionary.addTypes(biomeEnchanted, BiomeDictionary.Type.CONIFEROUS);
         BiomeDictionary.addTypes(biomeDarkened, BiomeDictionary.Type.MAGICAL);
+        BiomeDictionary.addTypes(biomeEnchanted, BiomeDictionary.Type.CONIFEROUS);
         BiomeDictionary.addTypes(biomeSmoldered, BiomeDictionary.Type.NETHER);
 
         BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(biomeStarlight, 1000));
-        BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(biomeEnchanted, 1000));
         BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(biomeDarkened, 1000));
+        BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(biomeEnchanted, 1000));
         BiomeManager.addBiome(BiomeManager.BiomeType.DESERT, new BiomeManager.BiomeEntry(biomeSmoldered, 1000));
 
 
         BiomeManager.addSpawnBiome(biomeStarlight);
-        BiomeManager.addSpawnBiome(biomeEnchanted);
         BiomeManager.addSpawnBiome(biomeDarkened);
+        BiomeManager.addSpawnBiome(biomeEnchanted);
         BiomeManager.addSpawnBiome(biomeSmoldered);
 
         BiomeProvider.allowedBiomes.add(biomeStarlight);
-        BiomeProvider.allowedBiomes.add(biomeEnchanted);
         BiomeProvider.allowedBiomes.add(biomeDarkened);
+        BiomeProvider.allowedBiomes.add(biomeEnchanted);
         BiomeProvider.allowedBiomes.add(biomeSmoldered);
     }
 }

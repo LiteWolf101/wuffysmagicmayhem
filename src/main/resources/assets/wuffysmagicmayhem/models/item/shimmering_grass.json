@@ -1,3 +1,6 @@
 {
-  "parent": "wuffysmagicmayhem:block/shimmering_grass"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "wuffysmagicmayhem:blocks/shimmering_grass"
+  }
 }

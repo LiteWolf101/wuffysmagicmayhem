@@ -1,0 +1,6 @@
+{
+  "parent": "block/tinted_cross",
+  "textures": {
+    "cross": "wuffysmagicmayhem:blocks/ashened_sapling"
+  }
+}

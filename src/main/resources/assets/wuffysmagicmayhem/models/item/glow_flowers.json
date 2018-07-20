@@ -1,3 +1,6 @@
 {
-  "parent": "wuffysmagicmayhem:block/glow_flowers"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "wuffysmagicmayhem:blocks/glow_flowers"
+  }
 }

@@ -1,10 +1,10 @@
 {
   "variants": {
-    "has_bulb=bulb": [
-      { "model": "wuffysmagicmayhem:strange_grass_bulb" }
-    ],
     "has_bulb=no_bulb": [
       { "model": "wuffysmagicmayhem:strange_grass_no_bulb" }
+    ],
+    "has_bulb=has_bulb": [
+      { "model": "wuffysmagicmayhem:strange_grass_has_bulb" }
     ]
   }
 }

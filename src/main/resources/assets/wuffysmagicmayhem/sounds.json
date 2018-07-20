@@ -6,7 +6,6 @@
       {
         "name": "wuffysmagicmayhem:block/totem_top/totem_hit",
         "stream": true
-
       }
     ]
   },
@@ -17,7 +16,66 @@
       {
         "name": "wuffysmagicmayhem:record/epic_wizards",
         "stream": true
-
+      }
+    ]
+  },
+  "entity.floating_star.hurt": {
+    "category": "entity",
+    "subtitle": "entity.floating_star.hurt",
+    "sounds": [
+      {
+        "name": "wuffysmagicmayhem:entity/floating_star/hurt",
+        "stream": true
+      }
+    ]
+  },
+  "entity.floating_star.death": {
+    "category": "entity",
+    "subtitle": "entity.floating_star.death",
+    "sounds": [
+      {
+        "name": "wuffysmagicmayhem:entity/floating_star/death",
+        "stream": true
+      }
+    ]
+  },
+  "entity.darkened_knight.ambient": {
+    "category": "entity",
+    "subtitle": "entity.darkened_knight.ambient",
+    "sounds": [
+      {
+        "name": "wuffysmagicmayhem:entity/darkened_knight/ambient",
+        "stream": true
+      }
+    ]
+  },
+  "entity.darkened_knight.hurt": {
+    "category": "entity",
+    "subtitle": "entity.darkened_knight.hurt",
+    "sounds": [
+      {
+        "name": "wuffysmagicmayhem:entity/darkened_knight/hurt",
+        "stream": true
+      }
+    ]
+  },
+  "entity.darkened_knight.death": {
+    "category": "entity",
+    "subtitle": "entity.darkened_knight.death",
+    "sounds": [
+      {
+        "name": "wuffysmagicmayhem:entity/darkened_knight/death",
+        "stream": true
+      }
+    ]
+  },
+  "entity.summoner_spike": {
+    "category": "entity",
+    "subtitle": "entity.summoner_spike",
+    "sounds": [
+      {
+        "name": "wuffysmagicmayhem:entity/summoner_spike",
+        "stream": true
       }
     ]
   }

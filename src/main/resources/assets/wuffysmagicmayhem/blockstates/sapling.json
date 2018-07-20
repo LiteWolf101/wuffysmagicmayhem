@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "variant=starlight": {"model": "wuffysmagicmayhem:starlight_sapling"},
+    "variant=darkened": {"model": "wuffysmagicmayhem:darkened_sapling"},
+    "variant=enchanted": {"model": "wuffysmagicmayhem:enchanted_sapling"},
+    "variant=ashened": {"model": "wuffysmagicmayhem:ashened_sapling"}
+  }
+}

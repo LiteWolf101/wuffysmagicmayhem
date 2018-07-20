@@ -1,23 +1,33 @@
 package litewolf101.wuffysmagicmayhem.world.biomes;
 
-import litewolf101.wuffysmagicmayhem.Reference;
+import litewolf101.wuffysmagicmayhem.init.BlocksInit;
+import litewolf101.wuffysmagicmayhem.utils.Reference;
+import litewolf101.wuffysmagicmayhem.utils.handlers.EnumWoodHandler;
+import litewolf101.wuffysmagicmayhem.world.worldgen.trees.WorldGenAshenedTree;
 import net.minecraft.block.BlockSand;
 import net.minecraft.block.BlockTallGrass;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.monster.*;
+import net.minecraft.entity.monster.EntityBlaze;
+import net.minecraft.entity.monster.EntityHusk;
+import net.minecraft.entity.monster.EntityMagmaCube;
+import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.ChunkPrimer;
+import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
+
+import static litewolf101.wuffysmagicmayhem.objects.blocks.BlockLogs.VARIANT;
+
 
 /**
  * Created by LiteWolf101 on 6/16/2018.
@@ -27,7 +37,8 @@ public class BiomeSmoldered extends Biome {
     public BiomeSmoldered() {
         super(properties);
         this.setRegistryName(new ResourceLocation(Reference.MODID, "biome_smoldered"));
-        decorator.treesPerChunk = 0;
+        decorator.treesPerChunk = 1;
+        decorator.reedsPerChunk = 0;
         decorator.flowersPerChunk = 0;
         properties.setTemperature(2.0F);
         properties.setHeightVariation(0.0F);
@@ -37,7 +48,7 @@ public class BiomeSmoldered extends Biome {
 
         spawnableMonsterList.clear();
         spawnableMonsterList.add(new SpawnListEntry(EntityMagmaCube.class, 8, 1, 1));
-        spawnableMonsterList.add(new SpawnListEntry(EntityBlaze.class, 7, 1, 2));
+        spawnableMonsterList.add(new SpawnListEntry(EntityBlaze.class, 3, 1, 1));
         spawnableMonsterList.add(new SpawnListEntry(EntityHusk.class, 8, 2, 5));
         spawnableMonsterList.add(new SpawnListEntry(EntityWitherSkeleton.class, 6, 2, 5));
 
@@ -56,6 +67,11 @@ public class BiomeSmoldered extends Biome {
         } else {
             return new WorldGenTallGrass(BlockTallGrass.EnumType.GRASS);
         }
+    }
+
+    @Override
+    public WorldGenAbstractTree getRandomTreeFeature(Random random) {
+        return new WorldGenAshenedTree(true);
     }
 
     @Override
@@ -88,8 +104,8 @@ public class BiomeSmoldered extends Biome {
     protected void generateBiomeSmolderedTerrain(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int x, int z, double noiseVal)
     {
         int i = worldIn.getSeaLevel();
-        IBlockState iblockstate = this.topBlock;
-        IBlockState iblockstate1 = this.fillerBlock;
+        IBlockState iblockstate = BlocksInit.GRASS.getDefaultState().withProperty(VARIANT, EnumWoodHandler.EnumType.ASHENED);
+        IBlockState iblockstate1 = BlocksInit.DIRT.getDefaultState().withProperty(VARIANT, EnumWoodHandler.EnumType.ASHENED);
         int j = -1;
         int k = (int)(noiseVal / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
         int l = x & 15;
@@ -121,8 +137,8 @@ public class BiomeSmoldered extends Biome {
                         }
                         else if (j1 >= i - 4 && j1 <= i + 1)
                         {
-                            iblockstate = this.topBlock;
-                            iblockstate1 = this.fillerBlock;
+                            iblockstate = BlocksInit.GRASS.getDefaultState().withProperty(VARIANT, EnumWoodHandler.EnumType.ASHENED);
+                            iblockstate1 = BlocksInit.DIRT.getDefaultState().withProperty(VARIANT, EnumWoodHandler.EnumType.ASHENED);
                         }
 
                         if (j1 < i && (iblockstate == null || iblockstate.getMaterial() == Material.AIR))

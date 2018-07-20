@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "variant=starlight": {"model": "wuffysmagicmayhem:dirt_starlight"},
+    "variant=darkened": {"model": "wuffysmagicmayhem:dirt_darkened"},
+    "variant=enchanted": {"model": "wuffysmagicmayhem:dirt_enchanted"},
+    "variant=ashened": {"model": "wuffysmagicmayhem:dirt_ashened"}
+  }
+}

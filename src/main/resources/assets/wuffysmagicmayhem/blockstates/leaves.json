@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "variant=starlight": {"model": "wuffysmagicmayhem:leaves_starlight"},
+    "variant=darkened": {"model": "wuffysmagicmayhem:leaves_darkened"},
+    "variant=enchanted": {"model": "wuffysmagicmayhem:leaves_enchanted"},
+    "variant=ashened": {"model": "wuffysmagicmayhem:leaves_ashened"}
+  }
+}

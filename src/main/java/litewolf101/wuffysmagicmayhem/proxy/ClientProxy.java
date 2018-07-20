@@ -1,18 +1,15 @@
 package litewolf101.wuffysmagicmayhem.proxy;
 
-import litewolf101.wuffysmagicmayhem.Reference;
 import litewolf101.wuffysmagicmayhem.WuffysMagicMayhem;
-import litewolf101.wuffysmagicmayhem.client.fx.ParticleShimmeringGrass;
-import litewolf101.wuffysmagicmayhem.client.fx.WMMParticleType;
-import litewolf101.wuffysmagicmayhem.client.wmmgui.GUIHandler;
-import litewolf101.wuffysmagicmayhem.handlers.ColorHandler;
-import litewolf101.wuffysmagicmayhem.handlers.WMMSoundHandler;
-import litewolf101.wuffysmagicmayhem.init.ModBlocks;
 import litewolf101.wuffysmagicmayhem.init.ModEntities;
-import litewolf101.wuffysmagicmayhem.init.ModItems;
+import litewolf101.wuffysmagicmayhem.utils.Reference;
+import litewolf101.wuffysmagicmayhem.utils.client.fx.ParticleShimmeringGrass;
+import litewolf101.wuffysmagicmayhem.utils.client.fx.WMMParticleType;
+import litewolf101.wuffysmagicmayhem.utils.client.wmmgui.GUIHandler;
+import litewolf101.wuffysmagicmayhem.utils.handlers.ColorHandler;
+import litewolf101.wuffysmagicmayhem.utils.handlers.WMMSoundHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
-import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
@@ -23,6 +20,9 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+
+//import litewolf101.wuffysmagicmayhem.init.ModBlocks;
+//import litewolf101.wuffysmagicmayhem.init.ModItems;
 
 /**
  * Created by LiteWolf101 on 11/16/2017.
@@ -49,11 +49,13 @@ public class ClientProxy extends CommonProxy {
 	}
 
 	@Override
-	public void registerModelBakeryStuff() {
-		ModelBakery.registerItemVariants(ModItems.bubbleShroom, new ResourceLocation(Reference.MODID, "bubbleshroom_gray"), new ResourceLocation(Reference.MODID, "bubbleshroom_blue"), new ResourceLocation(Reference.MODID, "bubbleshroom_green"), new ResourceLocation(Reference.MODID, "bubbleshroom_pink"));
-		ModelBakery.registerItemVariants(Item.getItemFromBlock(ModBlocks.blockBubbleshroom), new ResourceLocation(Reference.MODID, "block_bubbleshroom_gray"), new ResourceLocation(Reference.MODID, "block_bubbleshroom_blue"), new ResourceLocation(Reference.MODID, "block_bubbleshroom_green"), new ResourceLocation(Reference.MODID, "block_bubbleshroom_pink"));
-		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(ModBlocks.strangeGrass), stack -> new ModelResourceLocation(ModBlocks.strangeGrass.getRegistryName(), "inventory"));
-		ModelBakery.registerItemVariants(Item.getItemFromBlock(ModBlocks.strangeGrass), ModBlocks.strangeGrass.getRegistryName());
+	public void registerItemRenderer(Item item, int meta, String id) {
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), id));
+	}
+
+	@Override
+	public void registerVariantRenderer(Item item, int meta, String filename, String id) {
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(new ResourceLocation(Reference.MODID, filename), id));
 	}
 
 	@Override
